@@ -1,16 +1,601 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect, FormEvent } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { 
+  Menu, X, Sparkles, Shield, Leaf, Star, ChevronRight, 
+  Check, Phone, Mail, MapPin, Facebook, 
+  Clock, Home, Building2, Calendar, ArrowRight, Plus, Minus, Heart
+} from 'lucide-react';
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+// --- Types ---
+interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: any;
+  image: string;
+}
+
+interface PricingPackage {
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  popular?: boolean;
+}
+
+interface Testimonial {
+  name: string;
+  location: string;
+  text: string;
+  rating: number;
+}
+
+// --- Data ---
+const SERVICES: Service[] = [
+  { id: 'residential', title: 'Residential Cleaning', description: 'Comprehensive home cleaning tailored to your lifestyle.', icon: Home, image: '/image0.png' },
+  { id: 'deep', title: 'Deep Cleaning', description: 'A top-to-bottom refresh for every corner.', icon: Sparkles, image: '/image1.png' },
+  { id: 'move', title: 'Move-In / Move-Out', description: 'Ensure a fresh start with meticulous cleaning.', icon: ArrowRight, image: '/image2.png' },
+  { id: 'commercial', title: 'Commercial & Office', description: 'Professional environments deserve professional care.', icon: Building2, image: '/image3.png' },
+  { id: 'airbnb', title: 'Airbnb & Rental', description: 'Fast turnovers, 5-star results.', icon: Calendar, image: '/image4.png' },
+  { id: 'post-con', title: 'Post-Construction', description: 'Removing the dust of creation.', icon: Plus, image: '/image5.png' },
+];
+
+const PRICING: PricingPackage[] = [
+  {
+    name: 'Regular Glow', price: '$120', description: 'Residential regular cleaning for a fresh home.',
+    features: ['1 Bed / 1 Bath: $120', '2 Bedrooms: $150', '3 Bedrooms: $180', '4 Bedrooms: $220', 'Surface Dusting', 'Vacuum & Mop', 'Kitchen Surfaces', 'Trash Removal']
+  },
+  {
+    name: 'Deep Glow', price: '$200', description: 'Premium top-to-bottom detailed reset.', popular: true,
+    features: ['1 Bed / 1 Bath: $200', '2 Bed / 2 Bath: $260', '3 Bed / 2 Bath: $320', '4 Bed / 2 Bath: $380', 'Baseboards & Trim', 'Inside Microwave', 'Detailed Dusting']
+  },
+  {
+    name: 'Move-In/Out', price: '$180', description: 'Premium cleaning for transitions.',
+    features: ['1 Bed / 1 Bath: $180', '2 Bed / 2 Bath: $230', '3 Bed / 2 Bath: $280', '4 Bed / 2 Bath: $350', 'Inside Cabinets', 'Appliance Exteriors', 'Floor Deep Clean']
+  }
+];
+
+const TESTIMONIALS: Testimonial[] = [
+  { name: 'Sarah J.', location: 'Chicago, IL', text: "Melissa and her team are incredible. I've never seen my kitchen sparkle like this. It truly feels like a sanctuary now.", rating: 5 },
+  { name: 'Michael R.', location: 'Chicagoland Area', text: "Professional, punctual, and the attention to detail is unmatched. Best cleaning service in Chicago, hands down.", rating: 5 },
+  { name: 'Elena G.', location: 'Naperville', text: "We use Prrfect Glo for our Airbnb turnovers and our ratings have never been higher.", rating: 5 },
+  { name: 'David W.', location: 'Evanston', text: "The deep clean was worth every penny. They found dust in places I didn't even know existed.", rating: 5 },
+  { name: 'Jessica L.', location: 'Oak Park', text: "Eco-friendly products were a must for my family. Prrfect Glo delivered a spotless home without the harsh chemicals.", rating: 5 },
+];
+
+const GALLERY = ['/image7.jpeg', '/image8.jpeg', '/image9.jpeg', '/image6.jpeg'];
+
+const FAQS = [
+  { question: "Are you insured and bonded?", answer: "Yes, Prrfect Glo is fully insured and bonded for your peace of mind." },
+  { question: "Do I need to provide cleaning supplies?", answer: "No, we bring all our own premium, eco-friendly cleaning supplies and professional-grade equipment." },
+  { question: "How do I book a service?", answer: "You can book directly through our website by clicking 'Get a Quote' or 'Book Now'. You can also call or text us." },
+  { question: "What is your cancellation policy?", answer: "We require 24-hour notice for cancellations." },
+  { question: "Do I need to be home during the cleaning?", answer: "It's entirely up to you! Many of our clients provide a key or entry code." },
+  { question: "Which areas of Chicago do you serve?", answer: "We serve the entire Chicagoland area, including downtown Chicago, Evanston, Naperville, Oak Park, and surrounding suburbs." },
+];
+
+// --- Components ---
+
+const TopBar = () => (
+  <div className="bg-slate-900 text-white py-2 text-[10px] sm:text-xs border-b border-white/5">
+    <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
+      <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-6">
+        <div className="flex items-center gap-1.5"><Phone className="w-3 h-3 text-[#0F766E]" /><span>708-548-1931</span></div>
+        <div className="flex items-center gap-1.5"><Mail className="w-3 h-3 text-[#0F766E]" /><span className="hidden sm:inline">mmata@prrfectglocleaningservice.com</span><span className="sm:hidden">Email Us</span></div>
+        <div className="flex items-center gap-1.5"><Clock className="w-3 h-3 text-[#0F766E]" /><span>Mon-Sun: 8am-5pm</span></div>
+      </div>
+      <div className="flex items-center gap-4">
+        <a href="https://www.facebook.com/share/1CcBhZ8aD4/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="hover:text-[#0F766E] transition-colors"><Facebook className="w-3.5 h-3.5" /></a>
+        <a href="https://www.tiktok.com/@prrfectglocleaning?_r=1&_t=ZT-95Cq7lGXZm9" target="_blank" rel="noopener noreferrer" className="hover:text-[#0F766E] transition-colors">
+          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.31-.75.42-1.24 1.25-1.33 2.1-.1.7.1 1.41.53 1.98.5.73 1.36 1.19 2.24 1.17.96.03 1.91-.43 2.52-1.18.48-.54.75-1.24.76-1.95-.02-3.8-.02-7.61-.01-11.41z"/></svg>
+        </a>
+        <a href="http://wa.me/17085481931" target="_blank" rel="noopener noreferrer" className="hover:text-[#0F766E] transition-colors"><Phone className="w-3.5 h-3.5" /></a>
+      </div>
+    </div>
+  </div>
+);
+
+const Navbar = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Home', href: '#home' }, { name: 'Services', href: '#services' },
+    { name: 'How It Works', href: '#how-it-works' }, { name: 'Pricing', href: '#pricing' },
+    { name: 'Gallery', href: '#gallery' }, { name: 'About', href: '#about' }, { name: 'Contact', href: '#contact' },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100' : 'bg-transparent'}`}>
+      <TopBar />
+      <div className={`max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}>
+        <a href="#home" className="flex items-center gap-3 group">
+          <div className={`bg-white rounded-full flex items-center justify-center shadow-md overflow-hidden group-hover:scale-105 transition-all duration-300 ${isScrolled ? 'w-16 h-16' : 'w-24 h-24 md:w-32 md:h-32'}`}>
+            <img src="/image10.jpeg" alt="Prrfect Glo Logo" className="w-full h-full object-contain p-1" />
+          </div>
+          <div className="flex flex-col">
+            <span className={`font-bold tracking-tight text-slate-900 transition-all duration-300 ${isScrolled ? 'text-lg' : 'text-2xl md:text-3xl'}`}>
+              Prrfect <span className="text-[#0F766E]">Glo</span>
+            </span>
+            {!isScrolled && <span className="text-[10px] md:text-xs font-bold text-[#0F766E] tracking-[0.2em] uppercase">Cleaning Service</span>}
+          </div>
+        </a>
+
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a key={link.name} href={link.href} className="text-sm font-medium text-slate-600 hover:text-[#0F766E] transition-colors">{link.name}</a>
+          ))}
+          <button onClick={onOpenBooking} className="bg-[#0F766E] text-white px-6 py-2.5 rounded-full text-sm font-semibold glow-teal hover:bg-[#0D635C] transition-all active:scale-95">
+            Get Free Quote
+          </button>
+        </div>
+
+        <button className="md:hidden text-slate-900" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {isMobileMenuOpen ? <X /> : <Menu />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-100 p-6 flex flex-col gap-4 md:hidden">
+            {navLinks.map((link) => (
+              <a key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-slate-700">{link.name}</a>
+            ))}
+            <button onClick={() => { setIsMobileMenuOpen(false); onOpenBooking(); }} className="bg-[#0F766E] text-white w-full py-4 rounded-xl font-bold mt-2">Get Free Quote</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
+
+const Hero = ({ onOpenBooking }: { onOpenBooking: () => void }) => (
+  <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <div className="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920" alt="Luxury Home" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+      <div className="absolute inset-0 bg-white/95 md:bg-gradient-to-r md:from-white md:via-white/90 md:to-transparent"></div>
+    </div>
+    <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+      <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-2xl">
+        <div className="inline-flex items-center gap-2 bg-[#0F766E] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#0F766E]/20">
+          <Star className="w-4 h-4 fill-white" />Chicago's Premier Cleaning Service
+        </div>
+        <h1 className="text-5xl md:text-7xl font-bold text-slate-900 leading-[1.1] mb-6">
+          Where Cleanliness Meets <span className="text-[#0F766E] italic">Excellence</span>
+        </h1>
+        <p className="text-xl text-slate-800 mb-10 leading-relaxed font-medium">
+          Transforming your space into a glowing sanctuary. Premium residential and commercial cleaning with a white-glove touch.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <button onClick={onOpenBooking} className="bg-[#0F766E] text-white px-10 py-4 rounded-full text-lg font-bold glow-teal hover:bg-[#0D635C] transition-all flex items-center justify-center gap-2 group">
+            Get Your Free Quote <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+          <button onClick={onOpenBooking} className="bg-white text-slate-900 border-2 border-slate-200 px-10 py-4 rounded-full text-lg font-bold hover:border-[#0F766E] hover:text-[#0F766E] transition-all flex items-center justify-center">
+            Book Now
+          </button>
+        </div>
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {[{ icon: Shield, label: 'Fully Insured' }, { icon: Leaf, label: 'Eco-Friendly' }, { icon: Star, label: '5-Star Rated' }, { icon: MapPin, label: 'Chicagoland' }].map((item, i) => (
+            <div key={i} className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm border border-slate-100">
+                <item.icon className="w-5 h-5 text-[#0F766E]" />
+              </div>
+              <span className="text-sm font-semibold text-slate-700">{item.label}</span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  </section>
+);
+
+const Services = () => (
+  <section id="services" className="py-24 bg-slate-50">
+    <div className="max-w-7xl mx-auto px-6">
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">Our Services</h2>
+        <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Tailored Cleaning Solutions for Every Space</h3>
+        <p className="text-lg text-slate-600">From luxury homes to professional offices, we deliver sparkling results that exceed expectations.</p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {SERVICES.map((service, index) => (
+          <motion.div key={service.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}
+            className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100">
+            <div className="h-64 overflow-hidden relative">
+              <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <div className="absolute top-6 left-6 w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-lg">
+                <service.icon className="w-6 h-6 text-[#0F766E]" />
+              </div>
+            </div>
+            <div className="p-8"><h4 className="text-2xl font-bold text-slate-900">{service.title}</h4></div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const HowItWorks = () => {
+  const steps = [
+    { icon: Calendar, title: "Book Online", description: "Choose your service, date, and time that works best for you in just 60 seconds." },
+    { icon: Sparkles, title: "We Clean", description: "Our professional, background-checked team arrives and transforms your space." },
+    { icon: Heart, title: "You Relax", description: "Enjoy your sparkling, refreshed home and the peace of mind you deserve." },
+  ];
+
+  return (
+    <section id="how-it-works" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">How It Works</h2>
+          <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Your Path to a Glowing Sanctuary</h3>
+          <p className="text-lg text-slate-600">Three simple steps to a cleaner, happier home.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+          <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>
+          {steps.map((step, index) => (
+            <div key={index} className="relative z-10 flex flex-col items-center text-center">
+              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-[#0F766E]/10 mb-8 hover:border-[#0F766E] transition-all duration-300">
+                <step.icon className="w-10 h-10 text-[#0F766E]" />
+              </div>
+              <h4 className="text-2xl font-bold text-slate-900 mb-4">{step.title}</h4>
+              <p className="text-slate-600 leading-relaxed">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Pricing = ({ onOpenBooking }: { onOpenBooking: () => void }) => (
+  <section id="pricing" className="py-24">
+    <div className="max-w-7xl mx-auto px-6">
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">Pricing Packages</h2>
+        <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Transparent Pricing for a Glowing Home</h3>
+        <div className="inline-block bg-[#0F766E]/10 border border-[#0F766E]/20 rounded-2xl p-6 mb-8">
+          <div className="flex items-center gap-3 justify-center mb-2">
+            <Sparkles className="w-5 h-5 text-[#0F766E]" /><span className="font-bold text-[#0F766E] uppercase tracking-wider">Current Specials</span><Sparkles className="w-5 h-5 text-[#0F766E]" />
+          </div>
+          <p className="text-slate-700 font-medium mb-4">Mention <span className="text-[#0F766E] font-bold">"April Specials"</span> or <span className="text-[#0F766E] font-bold">"Cleaning Specials"</span> when calling!</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-bold text-slate-600">
+            <div>1 Bed: $150+</div><div>2 Bed: $180</div><div>3 Bed: $210</div><div>4 Bed: $250</div>
+          </div>
+        </div>
+        <p className="text-lg text-slate-600">Choose the package that fits your needs. All prices are starting rates and may vary based on home condition.</p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {PRICING.map((pkg, i) => (
+          <div key={i} className={`relative p-8 rounded-[2.5rem] border-2 transition-all flex flex-col ${pkg.popular ? 'border-[#0F766E] bg-white shadow-2xl scale-105 z-10' : 'border-slate-100 bg-slate-50 hover:border-[#0F766E]/20'}`}>
+            {pkg.popular && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#0F766E] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Most Popular</div>}
+            <h4 className="text-xl font-bold text-slate-900 mb-2">{pkg.name}</h4>
+            <p className="text-slate-500 mb-6 text-sm">{pkg.description}</p>
+            <div className="flex items-baseline gap-1 mb-8"><span className="text-4xl font-bold text-slate-900">{pkg.price}</span><span className="text-slate-500 font-medium text-xs">/ starting</span></div>
+            <ul className="space-y-4 mb-10 flex-grow">
+              {pkg.features.map((feature, j) => (
+                <li key={j} className="flex items-center gap-3 text-slate-700 text-sm">
+                  <div className="w-4 h-4 bg-[#0F766E]/10 rounded-full flex items-center justify-center flex-shrink-0"><Check className="w-2.5 h-2.5 text-[#0F766E]" /></div>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <button onClick={onOpenBooking} className={`w-full py-4 rounded-2xl font-bold transition-all text-sm ${pkg.popular ? 'bg-[#0F766E] text-white glow-teal hover:bg-[#0D635C]' : 'bg-white text-slate-900 border border-slate-200 hover:border-[#0F766E] hover:text-[#0F766E]'}`}>
+              Choose Package
+            </button>
+          </div>
+        ))}
+      </div>
+      <p className="text-center mt-12 text-slate-500 italic">* Final pricing depends on square footage and specific property conditions.</p>
+    </div>
+  </section>
+);
+
+const GallerySection = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  return (
+    <section id="gallery" className="py-24 bg-slate-900 text-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+          <div className="max-w-2xl">
+            <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">Our Work</h2>
+            <h3 className="text-4xl md:text-5xl font-bold mb-6">The Prrfect Glo Transformation</h3>
+            <p className="text-lg text-slate-400">See the difference our meticulous attention to detail makes.</p>
+          </div>
+          <button className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full font-bold transition-all border border-white/10">View All Projects</button>
+        </div>
+        <div className="columns-1 sm:columns-2 lg:columns-4 gap-6 space-y-6">
+          {GALLERY.map((img, i) => (
+            <motion.div key={i} whileHover={{ scale: 1.02 }} className="relative rounded-3xl overflow-hidden cursor-pointer group" onClick={() => setSelectedImage(img)}>
+              <img src={img} alt={`Clean space ${i}`} className="w-full h-auto object-cover" />
+              <div className="absolute inset-0 bg-[#0F766E]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><Plus className="text-white w-12 h-12" /></div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-6" onClick={() => setSelectedImage(null)}>
+            <button className="absolute top-8 right-8 text-white hover:text-[#0F766E] transition-colors"><X className="w-10 h-10" /></button>
+            <motion.img initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} src={selectedImage} className="max-w-full max-h-full rounded-2xl shadow-2xl" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+};
+
+const Testimonials = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length), 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="py-24 bg-[#0F766E] overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-white/70 font-bold tracking-widest uppercase text-sm mb-4">Testimonials</h2>
+          <h3 className="text-4xl md:text-5xl font-bold text-white">What Our Clients Are Saying</h3>
+        </div>
+        <div className="max-w-4xl mx-auto">
+          <div className="relative h-[400px] md:h-[300px]">
+            <AnimatePresence mode="wait">
+              <motion.div key={activeIndex} initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }} className="absolute inset-0 flex flex-col items-center text-center">
+                <div className="flex gap-1 mb-8">{[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-[#D4AF37] text-[#D4AF37]" />)}</div>
+                <p className="text-2xl md:text-3xl text-white font-medium leading-relaxed mb-8 italic">"{TESTIMONIALS[activeIndex].text}"</p>
+                <div>
+                  <h4 className="text-xl font-bold text-white">{TESTIMONIALS[activeIndex].name}</h4>
+                  <p className="text-white/60">{TESTIMONIALS[activeIndex].location}</p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          <div className="flex justify-center gap-3 mt-8">
+            {TESTIMONIALS.map((_, i) => (
+              <button key={i} onClick={() => setActiveIndex(i)} className={`w-3 h-3 rounded-full transition-all ${activeIndex === i ? 'bg-white w-8' : 'bg-white/30'}`} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const About = () => (
+  <section id="about" className="py-24">
+    <div className="max-w-7xl mx-auto px-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="relative">
+          <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
+            <img src="/bHHoF.jpg" alt="Melissa & The Team" className="w-full h-full object-cover" />
+          </div>
+          <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-3xl shadow-xl border border-slate-100 max-w-xs hidden md:block">
+            <p className="text-[#0F766E] font-bold text-lg mb-2">"Cleanliness is more than a service, it's a feeling of peace."</p>
+            <p className="text-slate-500 text-sm">— Melissa, Founder</p>
+          </div>
+        </div>
+        <div>
+          <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">About Prrfect Glo</h2>
+          <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8">Meet Melissa & The Team</h3>
+          <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+            <p>Prrfect Glo Cleaning Service LLC was born out of a simple belief: every home and workspace should be a sanctuary. Founded by Melissa, a professional with an obsession for detail and a heart for service, we've grown into Chicago's premier choice for high-end cleaning.</p>
+            <p>Our team isn't just trained to clean; they're trained to care. We treat every space as if it were our own, using eco-friendly products that are safe for your family, pets, and the environment.</p>
+            <p>Whether it's a downtown Chicago high-rise or a suburban family home, we bring the same level of excellence and integrity to every job. We don't just clean—we make your space glow.</p>
+          </div>
+          <div className="grid grid-cols-2 gap-8 mt-12">
+            <div><h4 className="text-4xl font-bold text-[#0F766E] mb-2">500+</h4><p className="text-slate-500 font-medium">Happy Clients</p></div>
+            <div><h4 className="text-4xl font-bold text-[#0F766E] mb-2">100%</h4><p className="text-slate-500 font-medium">Satisfaction Rate</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const FAQ = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  return (
+    <section className="py-24 bg-slate-50">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">FAQ</h2>
+          <h3 className="text-4xl font-bold text-slate-900">Common Questions</h3>
+        </div>
+        <div className="space-y-4">
+          {FAQS.map((faq, i) => (
+            <div key={i} className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+              <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-slate-50 transition-colors">
+                <span className="text-lg font-bold text-slate-900">{faq.question}</span>
+                {openIndex === i ? <Minus className="text-[#0F766E]" /> : <Plus className="text-[#0F766E]" />}
+              </button>
+              <AnimatePresence>
+                {openIndex === i && (
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                    <div className="px-8 pb-6 text-slate-600 leading-relaxed border-t border-slate-50 pt-4">{faq.answer}</div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const BookingModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [formData, setFormData] = useState({
+    serviceType: 'Residential Cleaning', propertySize: 'Studio / 1 Bedroom', fullName: '', phone: '', email: '', details: ''
+  });
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('https://formspree.io/f/xwvwberb', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData)
+      });
+      if (response.ok) { setIsSuccess(true); } else { throw new Error('Failed to send'); }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('There was an error sending your request. Please try again or call us directly.');
+    } finally { setIsSubmitting(false); }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onClick={onClose} />
+      <motion.div initial={{ scale: 0.9, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} className="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl relative z-10 overflow-hidden max-h-[90vh] overflow-y-auto">
+        <button onClick={onClose} className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors"><X className="w-6 h-6" /></button>
+        {isSuccess ? (
+          <div className="p-12 text-center">
+            <div className="w-20 h-20 bg-[#0F766E]/10 text-[#0F766E] rounded-full flex items-center justify-center mx-auto mb-8"><Check className="w-10 h-10" /></div>
+            <h3 className="text-3xl font-bold text-slate-900 mb-4">Request Received!</h3>
+            <p className="text-lg text-slate-600 mb-8">Thank you for choosing Prrfect Glo. Melissa or a team member will contact you within 2 hours with your personalized quote.</p>
+            <button onClick={onClose} className="bg-[#0F766E] text-white px-10 py-4 rounded-full font-bold glow-teal hover:bg-[#0D635C] transition-all">Back to Website</button>
+          </div>
+        ) : (
+          <div className="p-10 md:p-12">
+            <h3 className="text-3xl font-bold text-slate-900 mb-2">Request a Quote</h3>
+            <p className="text-slate-500 mb-8">Tell us about your space and we'll handle the rest.</p>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700">Service Type</label>
+                  <select name="serviceType" value={formData.serviceType} onChange={(e) => setFormData({...formData, serviceType: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0F766E]">
+                    <option>Residential Cleaning</option><option>Deep Cleaning</option><option>Move-In / Move-Out</option><option>Commercial Cleaning</option><option>Airbnb Turnover</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700">Property Size</label>
+                  <select name="propertySize" value={formData.propertySize} onChange={(e) => setFormData({...formData, propertySize: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0F766E]">
+                    <option>Studio / 1 Bedroom</option><option>2 Bedrooms</option><option>3 Bedrooms</option><option>4+ Bedrooms</option><option>Office Space</option>
+                  </select>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700">Full Name</label>
+                  <input required type="text" placeholder="Your Name" value={formData.fullName} onChange={(e) => setFormData({...formData, fullName: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0F766E]" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700">Phone Number</label>
+                  <input required type="tel" placeholder="(708) 000-0000" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0F766E]" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-700">Email Address</label>
+                <input required type="email" placeholder="your@email.com" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0F766E]" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-700">Additional Details</label>
+                <textarea rows={3} placeholder="Any special requests or details about your home..." value={formData.details} onChange={(e) => setFormData({...formData, details: e.target.value})} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#0F766E]"></textarea>
+              </div>
+              <button disabled={isSubmitting} className="w-full bg-[#0F766E] text-white py-5 rounded-2xl font-bold text-lg glow-teal hover:bg-[#0D635C] transition-all flex items-center justify-center gap-3">
+                {isSubmitting ? <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <><span>Send Request</span><ChevronRight className="w-5 h-5" /></>}
+              </button>
+            </form>
+          </div>
+        )}
+      </motion.div>
     </div>
   );
 };
 
-const Index = PlaceholderIndex;
+const Footer = () => (
+  <footer id="contact" className="bg-slate-900 text-white pt-24 pb-12">
+    <div className="max-w-7xl mx-auto px-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="space-y-6">
+          <div className="flex items-center gap-2">
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden">
+              <img src="/image10.jpeg" alt="Prrfect Glo Logo" className="w-full h-full object-contain p-1" />
+            </div>
+            <span className="text-2xl font-bold tracking-tight">Prrfect <span className="text-[#0F766E]">Glo</span></span>
+          </div>
+          <p className="text-slate-400 leading-relaxed">Transforming Chicago's spaces into glowing sanctuaries with premium, eco-friendly cleaning services.</p>
+        </div>
+        <div>
+          <h4 className="text-lg font-bold mb-8">Quick Links</h4>
+          <ul className="space-y-4 text-slate-400">
+            <li><a href="#home" className="hover:text-[#0F766E] transition-colors">Home</a></li>
+            <li><a href="#services" className="hover:text-[#0F766E] transition-colors">Services</a></li>
+            <li><a href="#how-it-works" className="hover:text-[#0F766E] transition-colors">How It Works</a></li>
+            <li><a href="#pricing" className="hover:text-[#0F766E] transition-colors">Pricing</a></li>
+            <li><a href="#gallery" className="hover:text-[#0F766E] transition-colors">Gallery</a></li>
+            <li><a href="#about" className="hover:text-[#0F766E] transition-colors">About Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-lg font-bold mb-8">Contact Info</h4>
+          <ul className="space-y-6 text-slate-400">
+            <li className="flex gap-4"><Phone className="w-5 h-5 text-[#0F766E] flex-shrink-0" /><span>708-548-1931</span></li>
+            <li className="flex gap-4"><Mail className="w-5 h-5 text-[#0F766E] flex-shrink-0" /><span>mmata@prrfectglocleaningservice.com</span></li>
+            <li className="flex gap-4"><MapPin className="w-5 h-5 text-[#0F766E] flex-shrink-0" /><span>Serving Chicago, IL & Suburbs</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-lg font-bold mb-8">Business Hours</h4>
+          <ul className="space-y-4 text-slate-400">
+            <li className="flex justify-between"><span>Mon - Sun:</span><span className="text-white">8:00 AM - 5:00 PM</span></li>
+          </ul>
+        </div>
+      </div>
+      <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-sm">
+        <p>© 2026 Prrfect Glo Cleaning Service LLC. All rights reserved.</p>
+        <div className="flex gap-8">
+          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+);
+
+const Index = () => {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
+  return (
+    <div className="font-sans">
+      <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
+      <main>
+        <Hero onOpenBooking={() => setIsBookingOpen(true)} />
+        <Services />
+        <HowItWorks />
+        <Pricing onOpenBooking={() => setIsBookingOpen(true)} />
+        <GallerySection />
+        <Testimonials />
+        <About />
+        <FAQ />
+      </main>
+      <Footer />
+      <motion.button initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+        onClick={() => setIsBookingOpen(true)}
+        className="fixed bottom-8 right-8 z-40 bg-[#0F766E] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl glow-teal md:w-auto md:px-8 md:gap-3">
+        <Calendar className="w-6 h-6" /><span className="hidden md:block font-bold">Book Now</span>
+      </motion.button>
+      <AnimatePresence>
+        {isBookingOpen && <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export default Index;
