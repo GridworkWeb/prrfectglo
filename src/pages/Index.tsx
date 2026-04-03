@@ -488,7 +488,7 @@ const Footer = () => (
           <h4 className="text-lg font-bold mb-8">Contact Info</h4>
           <ul className="space-y-6 text-slate-400">
             <li className="flex gap-4"><Phone className="w-5 h-5 text-[#0F766E] flex-shrink-0" /><span>708-548-1931</span></li>
-            <li className="flex gap-4"><Mail className="w-5 h-5 text-[#0F766E] flex-shrink-0" /><span>mmata@prrfectglocleaningservice.com</span></li>
+            <li className="flex gap-4"><Mail className="w-5 h-5 text-[#0F766E] flex-shrink-0 mt-0.5" /><span className="break-all text-sm sm:text-base">mmata@prrfectglocleaningservice.com</span></li>
             <li className="flex gap-4"><MapPin className="w-5 h-5 text-[#0F766E] flex-shrink-0" /><span>Serving Chicago, IL & Suburbs</span></li>
           </ul>
         </div>
