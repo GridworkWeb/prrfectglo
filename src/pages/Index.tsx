@@ -173,7 +173,7 @@ const Navbar = () => {
 };
 
 const Hero = () => (
-  <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+  <section id="home" className="relative min-h-screen flex items-center pt-32 md:pt-20 overflow-hidden">
     <div className="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920" alt="Luxury Home" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
       <div className="absolute inset-0 bg-white/95 md:bg-gradient-to-r md:from-white md:via-white/90 md:to-transparent"></div>
