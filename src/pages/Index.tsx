@@ -90,7 +90,7 @@ const TopBar = () => (
     <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
       <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-6">
         <div className="flex items-center gap-1.5"><Phone className="w-3 h-3 text-[#0F766E]" /><span>708-548-1931</span></div>
-        <div className="flex items-center gap-1.5"><Mail className="w-3 h-3 text-[#0F766E]" /><span className="hidden sm:inline">mmata@prrfectglocleaningservice.com</span><span className="sm:hidden">Email Us</span></div>
+        <div className="flex items-center gap-1.5"><Mail className="w-3 h-3 text-[#0F766E]" /><span className="break-all text-[10px] sm:text-xs">mmata@prrfectglocleaningservice.com</span></div>
         <div className="flex items-center gap-1.5"><Clock className="w-3 h-3 text-[#0F766E]" /><span>Mon-Sun: 8am-5pm</span></div>
       </div>
       <div className="flex items-center gap-4">
