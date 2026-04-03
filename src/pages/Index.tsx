@@ -125,7 +125,7 @@ const Navbar = () => {
       <TopBar />
       <div className={`max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}>
         <a href="#home" className="flex items-center gap-3 group">
-          <div className={`bg-white rounded-full flex items-center justify-center shadow-md overflow-hidden group-hover:scale-105 transition-all duration-300 ${isScrolled ? 'w-16 h-16' : 'w-24 h-24 md:w-32 md:h-32'}`}>
+          <div className={`bg-white rounded-full flex items-center justify-center shadow-md overflow-hidden group-hover:scale-105 transition-all duration-300 ${isScrolled ? 'w-12 h-12 md:w-16 md:h-16' : 'w-14 h-14 md:w-32 md:h-32'}`}>
             <img src="/image10.jpeg" alt="Prrfect Glo Logo" className="w-full h-full object-contain p-1" />
           </div>
           <div className="flex flex-col">
@@ -173,7 +173,7 @@ const Navbar = () => {
 };
 
 const Hero = () => (
-  <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+  <section id="home" className="relative min-h-screen flex items-center pt-32 md:pt-20 overflow-hidden">
     <div className="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920" alt="Luxury Home" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
       <div className="absolute inset-0 bg-white/95 md:bg-gradient-to-r md:from-white md:via-white/90 md:to-transparent"></div>
