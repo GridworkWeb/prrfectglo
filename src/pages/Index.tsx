@@ -526,12 +526,12 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
+        <About />
         <Services />
         <HowItWorks />
         <Pricing />
         <GallerySection />
         <Testimonials />
-        <About />
         <FAQ />
       </main>
       <Footer />
