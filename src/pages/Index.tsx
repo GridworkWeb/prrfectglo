@@ -175,7 +175,7 @@ const Hero = () => (
   <section id="home" className="relative min-h-screen flex items-center pt-40 md:pt-20 overflow-hidden">
     <div className="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920" alt="Luxury Home" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-      <div className="absolute inset-0 bg-white/95 md:bg-gradient-to-r md:from-white md:via-white/90 md:to-transparent"></div>
+      <div className="absolute inset-0 bg-[#FBF6EE]/95 md:bg-gradient-to-r md:from-[#FBF6EE] md:via-[#FBF6EE]/90 md:to-transparent"></div>
     </div>
     <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
       <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-2xl">
