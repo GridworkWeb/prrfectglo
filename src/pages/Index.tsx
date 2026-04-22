@@ -389,7 +389,7 @@ const Testimonials = () => {
 };
 
 const About = () => (
-  <section id="about" className="py-24">
+  <section id="about" className="py-24 bg-[#FBF6EE]">
     <div className="max-w-7xl mx-auto px-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="relative space-y-6">
