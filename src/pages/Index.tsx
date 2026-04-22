@@ -270,7 +270,7 @@ const HowItWorks = () => {
 };
 
 const Pricing = () => (
-  <section id="pricing" className="py-24">
+  <section id="pricing" className="py-24 bg-[#FFFBF4]">
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">Pricing Packages</h2>
