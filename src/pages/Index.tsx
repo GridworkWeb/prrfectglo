@@ -175,7 +175,7 @@ const Hero = () => (
   <section id="home" className="relative min-h-screen flex items-center pt-40 md:pt-20 overflow-hidden">
     <div className="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920" alt="Luxury Home" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-      <div className="absolute inset-0 bg-white/95 md:bg-gradient-to-r md:from-white md:via-white/90 md:to-transparent"></div>
+      <div className="absolute inset-0 bg-[#FBF6EE]/95 md:bg-gradient-to-r md:from-[#FBF6EE] md:via-[#FBF6EE]/90 md:to-transparent"></div>
     </div>
     <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
       <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-2xl">
@@ -212,7 +212,7 @@ const Hero = () => (
 );
 
 const Services = () => (
-  <section id="services" className="py-24 bg-slate-50">
+  <section id="services" className="py-24 bg-[#FBF6EE]">
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">Our Services</h2>
@@ -245,7 +245,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-white">
+    <section id="how-it-works" className="py-24 bg-[#FFFBF4]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">How It Works</h2>
@@ -270,7 +270,7 @@ const HowItWorks = () => {
 };
 
 const Pricing = () => (
-  <section id="pricing" className="py-24">
+  <section id="pricing" className="py-24 bg-[#FFFBF4]">
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">Pricing Packages</h2>
@@ -389,7 +389,7 @@ const Testimonials = () => {
 };
 
 const About = () => (
-  <section id="about" className="py-24">
+  <section id="about" className="py-24 bg-[#FBF6EE]">
     <div className="max-w-7xl mx-auto px-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="relative space-y-6">
@@ -426,7 +426,7 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="py-24 bg-[#FBF6EE]">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">FAQ</h2>
@@ -526,12 +526,12 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
+        <About />
         <Services />
         <HowItWorks />
         <Pricing />
         <GallerySection />
         <Testimonials />
-        <About />
         <FAQ />
       </main>
       <Footer />
