@@ -40,8 +40,9 @@ const SERVICES: Service[] = [
   { id: 'residential', title: 'Residential Cleaning', description: 'Comprehensive home cleaning tailored to your lifestyle.', icon: Home, image: '/image2.png' },
   { id: 'deep', title: 'Deep Cleaning', description: 'A top-to-bottom refresh for every corner.', icon: Sparkles, image: '/image1.png' },
   { id: 'move', title: 'Move-In / Move-Out', description: 'Ensure a fresh start with meticulous cleaning.', icon: ArrowRight, image: '/image0.png' },
-  { id: 'commercial', title: 'Commercial & Office', description: 'Professional environments deserve professional care.', icon: Building2, image: '/image3.png' },
-  { id: 'post-con', title: 'Post-Construction', description: 'Removing the dust of creation.', icon: Plus, image: '/image5.png' },
+  { id: 'deep-2', title: 'Deep Cleaning', description: 'A thorough, detailed clean for a complete refresh.', icon: Sparkles, image: '/image3.png' },
+  { id: 'post-con', title: 'Post-Construction', description: 'Removing the dust of creation.', icon: Plus, image: '/image1.png' },
+  { id: 'commercial', title: 'Commercial & Office', description: 'Professional environments deserve professional care.', icon: Building2, image: '/image5.png' },
 ];
 
 const PRICING: PricingPackage[] = [
