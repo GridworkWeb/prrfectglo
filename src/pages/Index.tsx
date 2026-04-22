@@ -426,7 +426,7 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="py-24 bg-[#FBF6EE]">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">FAQ</h2>
