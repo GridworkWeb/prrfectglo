@@ -85,7 +85,20 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased font-sans;
+    font-family: 'Karla', system-ui, sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .font-display-italic {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
   }
 }
 
@@ -93,9 +106,13 @@
   .glow-teal {
     box-shadow: 0 0 24px rgba(20, 184, 166, 0.35);
   }
-  
+
   .glow-gold {
     box-shadow: 0 0 24px rgba(202, 138, 64, 0.4);
+  }
+
+  .soft-shadow {
+    box-shadow: 0 10px 40px -12px rgba(15, 116, 110, 0.12), 0 4px 16px -4px rgba(180, 130, 60, 0.08);
   }
 
   .glass {
@@ -120,5 +137,12 @@
 
   .border-bronze {
     border-color: hsl(var(--bronze));
+  }
+
+  .text-gradient-teal-gold {
+    background: var(--gradient-teal-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 }
