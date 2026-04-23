@@ -214,7 +214,7 @@ const Hero = () => (
               <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm border border-slate-100">
                 <item.icon className="w-5 h-5 text-[#14B8A6]" />
               </div>
-              <span className="font-semibold text-[sidebar-primary-foreground] text-primary-foreground bg-destructive-foreground">{item.label}</span>
+              <span className="font-semibold text-[sidebar-primary-foreground] text-primary-foreground bg-primary-foreground">{item.label}</span>
             </div>
           ))}
         </div>
