@@ -138,8 +138,8 @@ const Navbar = () => {
             <img src="/image10.jpeg" alt="Prrfect Glo Logo" className="w-full h-full object-contain p-1" />
           </div>
           <div className="flex flex-col">
-            <span className={`font-bold tracking-tight text-slate-900 transition-all duration-300 ${isScrolled ? 'text-lg' : 'text-2xl md:text-3xl'}`}>
-              Prrfect <span className="text-[#14B8A6]">Glo</span>
+            <span className={`tracking-tight text-slate-900 transition-all duration-300 ${isScrolled ? 'text-lg' : 'text-2xl md:text-3xl'}`}>
+              <span className="font-semibold">Prrfect</span> <span className="font-display-italic text-[#14B8A6] text-[1.15em]">Glo</span>
             </span>
             {!isScrolled && <span className="text-[10px] md:text-xs font-bold text-[#14B8A6] tracking-[0.2em] uppercase">Cleaning Service</span>}
           </div>
@@ -188,8 +188,10 @@ const Hero = () => (
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--cream))]/95 via-[hsl(var(--cream))]/90 to-[hsl(36_60%_88%)]/85 md:bg-gradient-to-r md:from-[hsl(var(--cream))] md:via-[hsl(var(--cream))]/90 md:to-transparent"></div>
     </div>
     <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-      <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-2xl">
-        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#14B8A6] to-[hsl(var(--bronze))] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#14B8A6]/30">
+      <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-2xl relative">
+        <Sparkles className="absolute -top-6 -left-4 w-5 h-5 text-[hsl(var(--bronze))] animate-sparkle opacity-70" />
+        <Sparkles className="absolute top-2 right-12 w-4 h-4 text-[#14B8A6] animate-sparkle opacity-60" style={{ animationDelay: '0.8s' }} />
+        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#14B8A6] to-[hsl(var(--bronze))] text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-lg shadow-[#14B8A6]/30 tracking-wide">
           <Star className="w-4 h-4 fill-white" />Chicago's Premier Cleaning Service
         </div>
         <h1 className="font-display text-6xl md:text-8xl text-slate-900 leading-[1.05] mb-6 tracking-tight">
@@ -479,7 +481,7 @@ const Footer = () => (
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden">
               <img src="/image10.jpeg" alt="Prrfect Glo Logo" className="w-full h-full object-contain p-1" />
             </div>
-            <span className="text-2xl font-bold tracking-tight">Prrfect <span className="text-[#14B8A6]">Glo</span></span>
+            <span className="text-2xl tracking-tight"><span className="font-semibold">Prrfect</span> <span className="font-display-italic text-[#14B8A6] text-[1.15em]">Glo</span></span>
           </div>
           <p className="text-slate-400 leading-relaxed">Transforming Chicago's spaces into glowing sanctuaries with premium, eco-friendly cleaning services.</p>
           <div className="flex gap-4">
