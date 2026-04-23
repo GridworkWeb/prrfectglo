@@ -27,6 +27,7 @@ interface PricingPackage {
   description: string;
   features: string[];
   popular?: boolean;
+  special?: boolean;
 }
 
 interface Testimonial {
@@ -48,17 +49,24 @@ const SERVICES: Service[] = [
 
 const PRICING: PricingPackage[] = [
   {
-    name: 'Regular Glow', price: '$120', description: 'Residential regular cleaning for a fresh home.',
-    features: ['1 Bed / 1 Bath: $120', '2 Bedrooms: $150', '3 Bedrooms: $180', '4 Bedrooms: $220', 'Surface Dusting', 'Vacuum & Mop', 'Kitchen Surfaces', 'Trash Removal']
+    name: 'Residential Cleaning', price: '$80', description: 'Reliable regular cleaning for a fresh, glowing home.', special: true,
+    features: ['1 Bed / 1 Bath: $80', '2 Bed / 1 Bath: $100', '2 Bed / 2 Bath: $130', '3–4 Bed / 2+ Bath: $240–$280', 'Surface Dusting', 'Vacuum & Mop', 'Kitchen Surfaces', 'Trash Removal']
   },
   {
-    name: 'Deep Glow', price: '$200', description: 'Premium top-to-bottom detailed reset.', popular: true,
-    features: ['1 Bed / 1 Bath: $200', '2 Bed / 2 Bath: $260', '3 Bed / 2 Bath: $320', '4 Bed / 2 Bath: $380', 'Baseboards & Trim', 'Inside Microwave', 'Detailed Dusting']
+    name: 'Deep Cleaning', price: '$140', description: 'Premium top-to-bottom detailed reset.', popular: true,
+    features: ['1 Bed / 1 Bath: $140', '2 Bed / 1 Bath: $180', '2 Bed / 2 Bath: $240', '3–4 Bed / 2+ Bath: $320+', 'Baseboards & Trim', 'Inside Microwave', 'Detailed Dusting']
   },
   {
-    name: 'Move-In/Out', price: '$180', description: 'Premium cleaning for transitions.',
-    features: ['1 Bed / 1 Bath: $180', '2 Bed / 2 Bath: $230', '3 Bed / 2 Bath: $280', '4 Bed / 2 Bath: $350', 'Inside Cabinets', 'Appliance Exteriors', 'Floor Deep Clean']
+    name: 'Move-In / Move-Out', price: '$120', description: 'Detailed cleaning for smooth transitions.',
+    features: ['1 Bed / 1 Bath: $120', '2 Bed / 1 Bath: $150', '2 Bed / 2 Bath: $200', '3–4 Bed / 2+ Bath: $240+', 'Inside Cabinets', 'Appliance Exteriors', 'Floor Deep Clean']
   }
+];
+
+const ADDONS: { name: string; price: string }[] = [
+  { name: 'Oven', price: '$15+' },
+  { name: 'Fridge', price: '$25+' },
+  { name: 'Window', price: '$40+' },
+  { name: 'Laundry', price: '$40+' },
 ];
 
 const TESTIMONIALS: Testimonial[] = [
