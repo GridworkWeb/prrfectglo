@@ -192,8 +192,8 @@ const Hero = () => (
         <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#14B8A6] to-[hsl(var(--bronze))] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#14B8A6]/30">
           <Star className="w-4 h-4 fill-white" />Chicago's Premier Cleaning Service
         </div>
-        <h1 className="text-5xl md:text-7xl font-bold text-slate-900 leading-[1.1] mb-6">
-          Where Cleanliness Meets <span className="bg-gradient-to-r from-[#14B8A6] to-[hsl(var(--bronze))] bg-clip-text text-transparent italic">Excellence</span>
+        <h1 className="font-display text-6xl md:text-8xl text-slate-900 leading-[1.05] mb-6 tracking-tight">
+          Where Cleanliness Meets <span className="font-display-italic bg-gradient-to-r from-[#14B8A6] to-[hsl(var(--bronze))] bg-clip-text text-transparent">Excellence</span>
         </h1>
         <p className="text-xl text-slate-800 mb-10 leading-relaxed font-medium">
           Transforming your space into a glowing sanctuary. Premium residential and commercial cleaning with a white-glove touch.
@@ -226,7 +226,7 @@ const Services = () => (
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">Our Services</h2>
-        <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Tailored Cleaning Solutions for Every Space</h3>
+        <h3 className="font-display text-5xl md:text-6xl text-slate-900 mb-6 tracking-tight">Tailored Cleaning Solutions for Every Space</h3>
         <p className="text-lg text-slate-600">From luxury homes to professional offices, we deliver sparkling results that exceed expectations.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -239,7 +239,7 @@ const Services = () => (
                 <service.icon className="w-6 h-6 text-[#14B8A6]" />
               </div>
             </div>
-            <div className="p-8"><h4 className="text-2xl font-bold text-slate-900">{service.title}</h4></div>
+            <div className="p-8"><h4 className="font-display text-3xl text-slate-900">{service.title}</h4></div>
           </motion.div>
         ))}
       </div>
@@ -259,7 +259,7 @@ const HowItWorks = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">How It Works</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Your Path to a Glowing Sanctuary</h3>
+          <h3 className="font-display text-5xl md:text-6xl text-slate-900 mb-6 tracking-tight">Your Path to a Glowing Sanctuary</h3>
           <p className="text-lg text-slate-600">Three simple steps to a cleaner, happier home.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
@@ -269,7 +269,7 @@ const HowItWorks = () => {
               <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-[#14B8A6]/10 mb-8 hover:border-[#14B8A6] transition-all duration-300">
                 <step.icon className="w-10 h-10 text-[#14B8A6]" />
               </div>
-              <h4 className="text-2xl font-bold text-slate-900 mb-4">{step.title}</h4>
+              <h4 className="font-display text-3xl text-slate-900 mb-4">{step.title}</h4>
               <p className="text-slate-600 leading-relaxed">{step.description}</p>
             </div>
           ))}
@@ -284,7 +284,7 @@ const Pricing = () => (
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">Pricing Packages</h2>
-        <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Transparent Pricing for a Glowing Home</h3>
+        <h3 className="font-display text-5xl md:text-6xl text-slate-900 mb-6 tracking-tight">Transparent Pricing for a <span className="font-display-italic text-[#14B8A6]">Glowing</span> Home</h3>
         <p className="text-lg text-slate-600">Choose the package that fits your needs. All prices are starting rates and may vary based on home condition.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -292,9 +292,9 @@ const Pricing = () => (
           <div key={i} className={`relative p-8 rounded-[2.5rem] border-2 transition-all flex flex-col ${pkg.popular ? 'border-[#14B8A6] bg-white shadow-2xl scale-105 z-10' : 'border-slate-100 bg-warm-gradient hover:border-[#14B8A6]/20'}`}>
             {pkg.popular && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#14B8A6] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Most Popular</div>}
             {pkg.special && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[hsl(var(--bronze))] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Special</div>}
-            <h4 className="text-xl font-bold text-slate-900 mb-2">{pkg.name}</h4>
+            <h4 className="font-display text-3xl text-slate-900 mb-2">{pkg.name}</h4>
             <p className="text-slate-500 mb-6 text-sm">{pkg.description}</p>
-            <div className="flex items-baseline gap-1 mb-8"><span className="text-4xl font-bold text-slate-900">{pkg.price}</span><span className="text-slate-500 font-medium text-xs">/ starting</span></div>
+            <div className="flex items-baseline gap-1 mb-8"><span className="font-display text-5xl text-slate-900">{pkg.price}</span><span className="text-slate-500 font-medium text-xs">/ starting</span></div>
             <ul className="space-y-4 mb-10 flex-grow">
               {pkg.features.map((feature, j) => (
                 <li key={j} className="flex items-center gap-3 text-slate-700 text-sm">
@@ -311,7 +311,7 @@ const Pricing = () => (
       </div>
       <div className="mt-16 max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h4 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Add-Ons</h4>
+          <h4 className="font-display text-4xl md:text-5xl text-slate-900 mb-2">Add-Ons</h4>
           <p className="text-slate-500">Customize your clean with extra services.</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -337,7 +337,7 @@ const GallerySection = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
             <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">Our Work</h2>
-            <h3 className="text-4xl md:text-5xl font-bold mb-6">The Prrfect Glo Transformation</h3>
+            <h3 className="font-display text-5xl md:text-6xl mb-6 tracking-tight">The Prrfect Glo <span className="font-display-italic">Transformation</span></h3>
             <p className="text-lg text-slate-400">See the difference our meticulous attention to detail makes.</p>
           </div>
           <button className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full font-bold transition-all border border-white/10">View All Projects</button>
@@ -378,7 +378,7 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-white/70 font-bold tracking-widest uppercase text-sm mb-4">Testimonials</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-white">What Our Clients Are Saying</h3>
+          <h3 className="font-display text-5xl md:text-6xl text-white tracking-tight">What Our Clients Are <span className="font-display-italic">Saying</span></h3>
         </div>
         <div className="max-w-4xl mx-auto">
           <div className="relative h-[400px] md:h-[300px]">
@@ -387,7 +387,7 @@ const Testimonials = () => {
                 <div className="flex gap-1 mb-8">{[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-[#D4AF37] text-[#D4AF37]" />)}</div>
                 <p className="text-2xl md:text-3xl text-white font-medium leading-relaxed mb-8 italic">"{TESTIMONIALS[activeIndex].text}"</p>
                 <div>
-                  <h4 className="text-xl font-bold text-white">{TESTIMONIALS[activeIndex].name}</h4>
+                  <h4 className="font-display text-2xl text-white">{TESTIMONIALS[activeIndex].name}</h4>
                   <p className="text-white/60">{TESTIMONIALS[activeIndex].location}</p>
                 </div>
               </motion.div>
@@ -422,15 +422,15 @@ const About = () => (
         </div>
         <div>
           <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">About Prrfect Glo</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8">Meet Melissa & The Team</h3>
+          <h3 className="font-display text-5xl md:text-6xl text-slate-900 mb-8 tracking-tight">Meet Melissa & The <span className="font-display-italic text-[#14B8A6]">Team</span></h3>
           <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
             <p>Prrfect Glo Cleaning Service LLC was born out of a simple belief: every home and workspace should be a sanctuary. Founded by Melissa, a professional with an obsession for detail and a heart for service, we've grown into Chicago's premier choice for high-end cleaning.</p>
             <p>Our team isn't just trained to clean; they're trained to care. We treat every space as if it were our own, using eco-friendly products that are safe for your family, pets, and the environment.</p>
             <p>Whether it's a downtown Chicago high-rise or a suburban family home, we bring the same level of excellence and integrity to every job. We don't just clean—we make your space glow.</p>
           </div>
           <div className="grid grid-cols-2 gap-8 mt-12">
-            <div><h4 className="text-4xl font-bold text-[#14B8A6] mb-2">500+</h4><p className="text-slate-500 font-medium">Happy Clients</p></div>
-            <div><h4 className="text-4xl font-bold text-[#14B8A6] mb-2">100%</h4><p className="text-slate-500 font-medium">Satisfaction Rate</p></div>
+            <div><h4 className="font-display text-5xl text-[#14B8A6] mb-2">500+</h4><p className="text-slate-500 font-medium">Happy Clients</p></div>
+            <div><h4 className="font-display text-5xl text-[#14B8A6] mb-2">100%</h4><p className="text-slate-500 font-medium">Satisfaction Rate</p></div>
           </div>
         </div>
       </div>
@@ -446,7 +446,7 @@ const FAQ = () => {
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">FAQ</h2>
-          <h3 className="text-4xl font-bold text-slate-900">Common Questions</h3>
+          <h3 className="font-display text-5xl md:text-6xl text-slate-900 tracking-tight">Common <span className="font-display-italic">Questions</span></h3>
         </div>
         <div className="space-y-4">
           {FAQS.map((faq, i) => (
