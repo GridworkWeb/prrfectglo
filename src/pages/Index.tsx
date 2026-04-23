@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   Menu, X, Sparkles, Shield, Leaf, Star, ChevronRight, 
   Check, Phone, Mail, MapPin, Facebook, MessageCircle,
-  Clock, Home, Building2, Calendar, ArrowRight, Plus, Minus, Heart
+  Clock, Home, Building2, Calendar, ArrowRight, Plus, Minus, Heart,
+  AirVent, BookImage
 } from 'lucide-react';
 
 // --- Constants ---
@@ -37,12 +38,12 @@ interface Testimonial {
 
 // --- Data ---
 const SERVICES: Service[] = [
-  { id: 'residential', title: 'Residential Cleaning', description: 'Comprehensive home cleaning tailored to your lifestyle.', icon: Home, image: '/image0.png' },
-  { id: 'deep', title: 'Deep Cleaning', description: 'A top-to-bottom refresh for every corner.', icon: Sparkles, image: '/image1.png' },
-  { id: 'move', title: 'Move-In / Move-Out', description: 'Ensure a fresh start with meticulous cleaning.', icon: ArrowRight, image: '/image2.png' },
-  { id: 'commercial', title: 'Commercial & Office', description: 'Professional environments deserve professional care.', icon: Building2, image: '/image3.png' },
-  { id: 'airbnb', title: 'Airbnb & Rental', description: 'Fast turnovers, 5-star results.', icon: Calendar, image: '/image4.png' },
-  { id: 'post-con', title: 'Post-Construction', description: 'Removing the dust of creation.', icon: Plus, image: '/image5.png' },
+  { id: 'residential', title: 'Move-In/Out', description: 'Comprehensive home cleaning tailored to your lifestyle.', icon: Home, image: '/image0.png' },
+  { id: 'deep', title: 'Post-Construction', description: 'A top-to-bottom refresh for every corner.', icon: Sparkles, image: '/image1.png' },
+  { id: 'move', title: 'Residential', description: 'Ensure a fresh start with meticulous cleaning.', icon: BookImage, image: '/image2.png' },
+  { id: 'commercial', title: 'Deep Cleaning', description: 'Professional environments deserve professional care.', icon: Building2, image: '/image3.png' },
+  { id: 'airbnb', title: 'Office/Commercial', description: 'Fast turnovers, 5-star results.', icon: Calendar, image: '/image4.png' },
+  { id: 'post-con', title: 'Post-Construction', description: 'Removing the dust of creation.', icon: AirVent, image: '/image5.png' },
 ];
 
 const PRICING: PricingPackage[] = [
