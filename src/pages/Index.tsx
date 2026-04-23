@@ -177,15 +177,15 @@ const Hero = () => (
   <section id="home" className="relative min-h-screen flex items-center pt-40 md:pt-20 overflow-hidden">
     <div className="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920" alt="Luxury Home" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-      <div className="absolute inset-0 bg-white/95 md:bg-gradient-to-r md:from-white md:via-white/90 md:to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--cream))]/95 via-[hsl(var(--cream))]/90 to-[hsl(36_60%_88%)]/85 md:bg-gradient-to-r md:from-[hsl(var(--cream))] md:via-[hsl(var(--cream))]/90 md:to-transparent"></div>
     </div>
     <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
       <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-2xl">
-        <div className="inline-flex items-center gap-2 bg-[#14B8A6] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#14B8A6]/20">
+        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#14B8A6] to-[hsl(var(--bronze))] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#14B8A6]/30">
           <Star className="w-4 h-4 fill-white" />Chicago's Premier Cleaning Service
         </div>
         <h1 className="text-5xl md:text-7xl font-bold text-slate-900 leading-[1.1] mb-6">
-          Where Cleanliness Meets <span className="text-[#14B8A6] italic">Excellence</span>
+          Where Cleanliness Meets <span className="bg-gradient-to-r from-[#14B8A6] to-[hsl(var(--bronze))] bg-clip-text text-transparent italic">Excellence</span>
         </h1>
         <p className="text-xl text-slate-800 mb-10 leading-relaxed font-medium">
           Transforming your space into a glowing sanctuary. Premium residential and commercial cleaning with a white-glove touch.
@@ -214,7 +214,7 @@ const Hero = () => (
 );
 
 const Services = () => (
-  <section id="services" className="py-24 bg-slate-50">
+  <section id="services" className="py-24 bg-warm-gradient">
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">Our Services</h2>
@@ -290,7 +290,7 @@ const Pricing = () => (
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {PRICING.map((pkg, i) => (
-          <div key={i} className={`relative p-8 rounded-[2.5rem] border-2 transition-all flex flex-col ${pkg.popular ? 'border-[#14B8A6] bg-white shadow-2xl scale-105 z-10' : 'border-slate-100 bg-slate-50 hover:border-[#14B8A6]/20'}`}>
+          <div key={i} className={`relative p-8 rounded-[2.5rem] border-2 transition-all flex flex-col ${pkg.popular ? 'border-[#14B8A6] bg-white shadow-2xl scale-105 z-10' : 'border-slate-100 bg-warm-gradient hover:border-[#14B8A6]/20'}`}>
             {pkg.popular && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#14B8A6] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Most Popular</div>}
             <h4 className="text-xl font-bold text-slate-900 mb-2">{pkg.name}</h4>
             <p className="text-slate-500 mb-6 text-sm">{pkg.description}</p>
@@ -428,7 +428,7 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="py-24 bg-warm-gradient">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">FAQ</h2>
@@ -437,7 +437,7 @@ const FAQ = () => {
         <div className="space-y-4">
           {FAQS.map((faq, i) => (
             <div key={i} className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
-              <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-slate-50 transition-colors">
+              <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-warm-gradient transition-colors">
                 <span className="text-lg font-bold text-slate-900">{faq.question}</span>
                 {openIndex === i ? <Minus className="text-[#14B8A6]" /> : <Plus className="text-[#14B8A6]" />}
               </button>

@@ -4,26 +4,36 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 38 40% 96%;
     --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
+    --card: 38 50% 98%;
     --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
+    --popover: 38 50% 98%;
     --popover-foreground: 222.2 84% 4.9%;
     --primary: 172 66% 40%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --secondary: 36 35% 90%;
+    --secondary-foreground: 25 35% 22%;
+    --muted: 36 30% 92%;
+    --muted-foreground: 25 15% 40%;
+    --accent: 36 55% 55%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 36 25% 85%;
+    --input: 36 25% 85%;
     --ring: 172 66% 40%;
     --radius: 0.5rem;
+
+    /* Brand: gold/bronze tones from logo */
+    --bronze: 30 45% 50%;
+    --bronze-light: 36 60% 70%;
+    --bronze-deep: 25 50% 35%;
+    --cream: 38 50% 96%;
+
+    --gradient-warm: linear-gradient(135deg, hsl(38 55% 95%) 0%, hsl(36 60% 90%) 100%);
+    --gradient-teal-gold: linear-gradient(135deg, hsl(172 66% 40%) 0%, hsl(36 55% 55%) 100%);
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -85,10 +95,30 @@
   }
   
   .glow-gold {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 24px rgba(202, 138, 64, 0.4);
   }
 
   .glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
+    @apply bg-white/70 backdrop-blur-md border border-white/30;
+  }
+
+  .bg-cream {
+    background-color: hsl(var(--cream));
+  }
+
+  .bg-warm-gradient {
+    background: var(--gradient-warm);
+  }
+
+  .text-bronze {
+    color: hsl(var(--bronze));
+  }
+
+  .bg-bronze {
+    background-color: hsl(var(--bronze));
+  }
+
+  .border-bronze {
+    border-color: hsl(var(--bronze));
   }
 }
