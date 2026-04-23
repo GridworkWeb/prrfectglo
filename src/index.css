@@ -95,10 +95,30 @@
   }
   
   .glow-gold {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 24px rgba(202, 138, 64, 0.4);
   }
 
   .glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
+    @apply bg-white/70 backdrop-blur-md border border-white/30;
+  }
+
+  .bg-cream {
+    background-color: hsl(var(--cream));
+  }
+
+  .bg-warm-gradient {
+    background: var(--gradient-warm);
+  }
+
+  .text-bronze {
+    color: hsl(var(--bronze));
+  }
+
+  .bg-bronze {
+    background-color: hsl(var(--bronze));
+  }
+
+  .border-bronze {
+    border-color: hsl(var(--bronze));
   }
 }
