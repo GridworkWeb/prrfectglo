@@ -177,15 +177,15 @@ const Hero = () => (
   <section id="home" className="relative min-h-screen flex items-center pt-40 md:pt-20 overflow-hidden">
     <div className="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920" alt="Luxury Home" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-      <div className="absolute inset-0 bg-white/95 md:bg-gradient-to-r md:from-white md:via-white/90 md:to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--cream))]/95 via-[hsl(var(--cream))]/90 to-[hsl(36_60%_88%)]/85 md:bg-gradient-to-r md:from-[hsl(var(--cream))] md:via-[hsl(var(--cream))]/90 md:to-transparent"></div>
     </div>
     <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
       <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-2xl">
-        <div className="inline-flex items-center gap-2 bg-[#14B8A6] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#14B8A6]/20">
+        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#14B8A6] to-[hsl(var(--bronze))] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#14B8A6]/30">
           <Star className="w-4 h-4 fill-white" />Chicago's Premier Cleaning Service
         </div>
         <h1 className="text-5xl md:text-7xl font-bold text-slate-900 leading-[1.1] mb-6">
-          Where Cleanliness Meets <span className="text-[#14B8A6] italic">Excellence</span>
+          Where Cleanliness Meets <span className="bg-gradient-to-r from-[#14B8A6] to-[hsl(var(--bronze))] bg-clip-text text-transparent italic">Excellence</span>
         </h1>
         <p className="text-xl text-slate-800 mb-10 leading-relaxed font-medium">
           Transforming your space into a glowing sanctuary. Premium residential and commercial cleaning with a white-glove touch.
