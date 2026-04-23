@@ -285,21 +285,13 @@ const Pricing = () => (
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">Pricing Packages</h2>
         <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Transparent Pricing for a Glowing Home</h3>
-        <div className="inline-block bg-[#14B8A6]/10 border border-[#14B8A6]/20 rounded-2xl p-6 mb-8">
-          <div className="flex items-center gap-3 justify-center mb-2">
-            <Sparkles className="w-5 h-5 text-[#14B8A6]" /><span className="font-bold text-[#14B8A6] uppercase tracking-wider">Current Specials</span><Sparkles className="w-5 h-5 text-[#14B8A6]" />
-          </div>
-          <p className="text-slate-700 font-medium mb-4">Mention <span className="text-[#14B8A6] font-bold">"April Specials"</span> or <span className="text-[#14B8A6] font-bold">"Cleaning Specials"</span> when calling!</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-bold text-slate-600">
-            <div>1 Bed: $150+</div><div>2 Bed: $180</div><div>3 Bed: $210</div><div>4 Bed: $250</div>
-          </div>
-        </div>
         <p className="text-lg text-slate-600">Choose the package that fits your needs. All prices are starting rates and may vary based on home condition.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {PRICING.map((pkg, i) => (
           <div key={i} className={`relative p-8 rounded-[2.5rem] border-2 transition-all flex flex-col ${pkg.popular ? 'border-[#14B8A6] bg-white shadow-2xl scale-105 z-10' : 'border-slate-100 bg-warm-gradient hover:border-[#14B8A6]/20'}`}>
             {pkg.popular && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#14B8A6] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Most Popular</div>}
+            {pkg.special && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[hsl(var(--bronze))] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Special</div>}
             <h4 className="text-xl font-bold text-slate-900 mb-2">{pkg.name}</h4>
             <p className="text-slate-500 mb-6 text-sm">{pkg.description}</p>
             <div className="flex items-baseline gap-1 mb-8"><span className="text-4xl font-bold text-slate-900">{pkg.price}</span><span className="text-slate-500 font-medium text-xs">/ starting</span></div>
@@ -317,7 +309,21 @@ const Pricing = () => (
           </div>
         ))}
       </div>
-      <p className="text-center mt-12 text-slate-500 italic">* Final pricing depends on square footage and specific property conditions.</p>
+      <div className="mt-16 max-w-4xl mx-auto">
+        <div className="text-center mb-8">
+          <h4 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Add-Ons</h4>
+          <p className="text-slate-500">Customize your clean with extra services.</p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {ADDONS.map((addon, i) => (
+            <div key={i} className="bg-white border border-slate-100 rounded-2xl p-6 text-center hover:border-[#14B8A6]/30 transition-all">
+              <div className="text-slate-900 font-bold text-lg mb-1">{addon.name}</div>
+              <div className="text-[#14B8A6] font-bold text-xl">{addon.price}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <p className="text-center mt-12 text-slate-500 italic">* Prices are starting rates and can vary based on home size and condition.</p>
     </div>
   </section>
 );
