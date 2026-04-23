@@ -90,16 +90,16 @@ const TopBar = () => (
   <div className="bg-slate-900 text-white py-2 text-[10px] sm:text-xs border-b border-white/5">
     <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
       <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-6">
-        <div className="flex items-center gap-1.5"><Phone className="w-3 h-3 text-[#0F766E]" /><span>708-548-1931</span></div>
-        <div className="flex items-center gap-1.5"><Mail className="w-3 h-3 text-[#0F766E]" /><span className="break-all text-[10px] sm:text-xs">mmata@prrfectglocleaningservice.com</span></div>
-        <div className="flex items-center gap-1.5"><Clock className="w-3 h-3 text-[#0F766E]" /><span>Mon-Sun: 8am-5pm</span></div>
+        <div className="flex items-center gap-1.5"><Phone className="w-3 h-3 text-[#14B8A6]" /><span>708-548-1931</span></div>
+        <div className="flex items-center gap-1.5"><Mail className="w-3 h-3 text-[#14B8A6]" /><span className="break-all text-[10px] sm:text-xs">mmata@prrfectglocleaningservice.com</span></div>
+        <div className="flex items-center gap-1.5"><Clock className="w-3 h-3 text-[#14B8A6]" /><span>Mon-Sun: 8am-5pm</span></div>
       </div>
       <div className="flex items-center gap-4">
-        <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#0F766E] transition-colors"><Facebook className="w-3.5 h-3.5" /></a>
-        <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#0F766E] transition-colors">
+        <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#14B8A6] transition-colors"><Facebook className="w-3.5 h-3.5" /></a>
+        <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#14B8A6] transition-colors">
           <TikTokIcon className="w-3.5 h-3.5 fill-current" />
         </a>
-        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#0F766E] transition-colors"><MessageCircle className="w-3.5 h-3.5" /></a>
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#14B8A6] transition-colors"><MessageCircle className="w-3.5 h-3.5" /></a>
       </div>
     </div>
   </div>
@@ -131,17 +131,17 @@ const Navbar = () => {
           </div>
           <div className="flex flex-col">
             <span className={`font-bold tracking-tight text-slate-900 transition-all duration-300 ${isScrolled ? 'text-lg' : 'text-2xl md:text-3xl'}`}>
-              Prrfect <span className="text-[#0F766E]">Glo</span>
+              Prrfect <span className="text-[#14B8A6]">Glo</span>
             </span>
-            {!isScrolled && <span className="text-[10px] md:text-xs font-bold text-[#0F766E] tracking-[0.2em] uppercase">Cleaning Service</span>}
+            {!isScrolled && <span className="text-[10px] md:text-xs font-bold text-[#14B8A6] tracking-[0.2em] uppercase">Cleaning Service</span>}
           </div>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="text-sm font-medium text-slate-600 hover:text-[#0F766E] transition-colors">{link.name}</a>
+            <a key={link.name} href={link.href} className="text-sm font-medium text-slate-600 hover:text-[#14B8A6] transition-colors">{link.name}</a>
           ))}
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="bg-[#0F766E] text-white px-6 py-2.5 rounded-full text-sm font-semibold glow-teal hover:bg-[#0D635C] transition-all active:scale-95 flex items-center gap-2">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="bg-[#14B8A6] text-white px-6 py-2.5 rounded-full text-sm font-semibold glow-teal hover:bg-[#0F9488] transition-all active:scale-95 flex items-center gap-2">
             <MessageCircle className="w-4 h-4" /> Contact Us
           </a>
         </div>
@@ -181,11 +181,11 @@ const Hero = () => (
     </div>
     <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
       <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-2xl">
-        <div className="inline-flex items-center gap-2 bg-[#0F766E] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#0F766E]/20">
+        <div className="inline-flex items-center gap-2 bg-[#14B8A6] text-white px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-lg shadow-[#14B8A6]/20">
           <Star className="w-4 h-4 fill-white" />Chicago's Premier Cleaning Service
         </div>
         <h1 className="text-5xl md:text-7xl font-bold text-slate-900 leading-[1.1] mb-6">
-          Where Cleanliness Meets <span className="text-[#0F766E] italic">Excellence</span>
+          Where Cleanliness Meets <span className="text-[#14B8A6] italic">Excellence</span>
         </h1>
         <p className="text-xl text-slate-800 mb-10 leading-relaxed font-medium">
           Transforming your space into a glowing sanctuary. Premium residential and commercial cleaning with a white-glove touch.
@@ -202,7 +202,7 @@ const Hero = () => (
           {[{ icon: Shield, label: 'Fully Insured' }, { icon: Leaf, label: 'Eco-Friendly' }, { icon: Star, label: '5-Star Rated' }, { icon: MapPin, label: 'Chicagoland' }].map((item, i) => (
             <div key={i} className="flex items-center gap-3">
               <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm border border-slate-100">
-                <item.icon className="w-5 h-5 text-[#0F766E]" />
+                <item.icon className="w-5 h-5 text-[#14B8A6]" />
               </div>
               <span className="text-sm font-semibold text-slate-700">{item.label}</span>
             </div>
@@ -217,7 +217,7 @@ const Services = () => (
   <section id="services" className="py-24 bg-slate-50">
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">Our Services</h2>
+        <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">Our Services</h2>
         <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Tailored Cleaning Solutions for Every Space</h3>
         <p className="text-lg text-slate-600">From luxury homes to professional offices, we deliver sparkling results that exceed expectations.</p>
       </div>
@@ -228,7 +228,7 @@ const Services = () => (
             <div className="h-64 overflow-hidden relative">
               <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
               <div className="absolute top-6 left-6 w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-lg">
-                <service.icon className="w-6 h-6 text-[#0F766E]" />
+                <service.icon className="w-6 h-6 text-[#14B8A6]" />
               </div>
             </div>
             <div className="p-8"><h4 className="text-2xl font-bold text-slate-900">{service.title}</h4></div>
@@ -250,7 +250,7 @@ const HowItWorks = () => {
     <section id="how-it-works" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">How It Works</h2>
+          <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">How It Works</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Your Path to a Glowing Sanctuary</h3>
           <p className="text-lg text-slate-600">Three simple steps to a cleaner, happier home.</p>
         </div>
@@ -258,8 +258,8 @@ const HowItWorks = () => {
           <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>
           {steps.map((step, index) => (
             <div key={index} className="relative z-10 flex flex-col items-center text-center">
-              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-[#0F766E]/10 mb-8 hover:border-[#0F766E] transition-all duration-300">
-                <step.icon className="w-10 h-10 text-[#0F766E]" />
+              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-[#14B8A6]/10 mb-8 hover:border-[#14B8A6] transition-all duration-300">
+                <step.icon className="w-10 h-10 text-[#14B8A6]" />
               </div>
               <h4 className="text-2xl font-bold text-slate-900 mb-4">{step.title}</h4>
               <p className="text-slate-600 leading-relaxed">{step.description}</p>
@@ -275,13 +275,13 @@ const Pricing = () => (
   <section id="pricing" className="py-24">
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">Pricing Packages</h2>
+        <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">Pricing Packages</h2>
         <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Transparent Pricing for a Glowing Home</h3>
-        <div className="inline-block bg-[#0F766E]/10 border border-[#0F766E]/20 rounded-2xl p-6 mb-8">
+        <div className="inline-block bg-[#14B8A6]/10 border border-[#14B8A6]/20 rounded-2xl p-6 mb-8">
           <div className="flex items-center gap-3 justify-center mb-2">
-            <Sparkles className="w-5 h-5 text-[#0F766E]" /><span className="font-bold text-[#0F766E] uppercase tracking-wider">Current Specials</span><Sparkles className="w-5 h-5 text-[#0F766E]" />
+            <Sparkles className="w-5 h-5 text-[#14B8A6]" /><span className="font-bold text-[#14B8A6] uppercase tracking-wider">Current Specials</span><Sparkles className="w-5 h-5 text-[#14B8A6]" />
           </div>
-          <p className="text-slate-700 font-medium mb-4">Mention <span className="text-[#0F766E] font-bold">"April Specials"</span> or <span className="text-[#0F766E] font-bold">"Cleaning Specials"</span> when calling!</p>
+          <p className="text-slate-700 font-medium mb-4">Mention <span className="text-[#14B8A6] font-bold">"April Specials"</span> or <span className="text-[#14B8A6] font-bold">"Cleaning Specials"</span> when calling!</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-bold text-slate-600">
             <div>1 Bed: $150+</div><div>2 Bed: $180</div><div>3 Bed: $210</div><div>4 Bed: $250</div>
           </div>
@@ -290,20 +290,20 @@ const Pricing = () => (
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {PRICING.map((pkg, i) => (
-          <div key={i} className={`relative p-8 rounded-[2.5rem] border-2 transition-all flex flex-col ${pkg.popular ? 'border-[#0F766E] bg-white shadow-2xl scale-105 z-10' : 'border-slate-100 bg-slate-50 hover:border-[#0F766E]/20'}`}>
-            {pkg.popular && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#0F766E] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Most Popular</div>}
+          <div key={i} className={`relative p-8 rounded-[2.5rem] border-2 transition-all flex flex-col ${pkg.popular ? 'border-[#14B8A6] bg-white shadow-2xl scale-105 z-10' : 'border-slate-100 bg-slate-50 hover:border-[#14B8A6]/20'}`}>
+            {pkg.popular && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#14B8A6] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Most Popular</div>}
             <h4 className="text-xl font-bold text-slate-900 mb-2">{pkg.name}</h4>
             <p className="text-slate-500 mb-6 text-sm">{pkg.description}</p>
             <div className="flex items-baseline gap-1 mb-8"><span className="text-4xl font-bold text-slate-900">{pkg.price}</span><span className="text-slate-500 font-medium text-xs">/ starting</span></div>
             <ul className="space-y-4 mb-10 flex-grow">
               {pkg.features.map((feature, j) => (
                 <li key={j} className="flex items-center gap-3 text-slate-700 text-sm">
-                  <div className="w-4 h-4 bg-[#0F766E]/10 rounded-full flex items-center justify-center flex-shrink-0"><Check className="w-2.5 h-2.5 text-[#0F766E]" /></div>
+                  <div className="w-4 h-4 bg-[#14B8A6]/10 rounded-full flex items-center justify-center flex-shrink-0"><Check className="w-2.5 h-2.5 text-[#14B8A6]" /></div>
                   {feature}
                 </li>
               ))}
             </ul>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={`w-full py-4 rounded-2xl font-bold transition-all text-sm flex items-center justify-center gap-2 ${pkg.popular ? 'bg-[#0F766E] text-white glow-teal hover:bg-[#0D635C]' : 'bg-white text-slate-900 border border-slate-200 hover:border-[#0F766E] hover:text-[#0F766E]'}`}>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={`w-full py-4 rounded-2xl font-bold transition-all text-sm flex items-center justify-center gap-2 ${pkg.popular ? 'bg-[#14B8A6] text-white glow-teal hover:bg-[#0F9488]' : 'bg-white text-slate-900 border border-slate-200 hover:border-[#14B8A6] hover:text-[#14B8A6]'}`}>
               <MessageCircle className="w-4 h-4" /> Contact Us
             </a>
           </div>
@@ -322,7 +322,7 @@ const GallerySection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">Our Work</h2>
+            <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">Our Work</h2>
             <h3 className="text-4xl md:text-5xl font-bold mb-6">The Prrfect Glo Transformation</h3>
             <p className="text-lg text-slate-400">See the difference our meticulous attention to detail makes.</p>
           </div>
@@ -332,7 +332,7 @@ const GallerySection = () => {
           {GALLERY.map((img, i) => (
             <motion.div key={i} whileHover={{ scale: 1.02 }} className="relative rounded-3xl overflow-hidden cursor-pointer group" onClick={() => setSelectedImage(img)}>
               <img src={img} alt={`Clean space ${i}`} className="w-full h-auto object-cover" />
-              <div className="absolute inset-0 bg-[#0F766E]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><Plus className="text-white w-12 h-12" /></div>
+              <div className="absolute inset-0 bg-[#14B8A6]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><Plus className="text-white w-12 h-12" /></div>
             </motion.div>
           ))}
         </div>
@@ -340,7 +340,7 @@ const GallerySection = () => {
       <AnimatePresence>
         {selectedImage && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-6" onClick={() => setSelectedImage(null)}>
-            <button className="absolute top-8 right-8 text-white hover:text-[#0F766E] transition-colors"><X className="w-10 h-10" /></button>
+            <button className="absolute top-8 right-8 text-white hover:text-[#14B8A6] transition-colors"><X className="w-10 h-10" /></button>
             <motion.img initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} src={selectedImage} className="max-w-full max-h-full rounded-2xl shadow-2xl" />
           </motion.div>
         )}
@@ -358,7 +358,7 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="py-24 bg-[#0F766E] overflow-hidden relative">
+    <section className="py-24 bg-[#14B8A6] overflow-hidden relative">
       <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -402,12 +402,12 @@ const About = () => (
             <img src="/team2.png" alt="Prrfect Glo Team Members" className="w-full h-full object-cover" />
           </div>
           <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-3xl shadow-xl border border-slate-100 max-w-xs hidden md:block">
-            <p className="text-[#0F766E] font-bold text-lg mb-2">"Cleanliness is more than a service, it's a feeling of peace."</p>
+            <p className="text-[#14B8A6] font-bold text-lg mb-2">"Cleanliness is more than a service, it's a feeling of peace."</p>
             <p className="text-slate-500 text-sm">— Melissa, Founder</p>
           </div>
         </div>
         <div>
-          <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">About Prrfect Glo</h2>
+          <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">About Prrfect Glo</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8">Meet Melissa & The Team</h3>
           <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
             <p>Prrfect Glo Cleaning Service LLC was born out of a simple belief: every home and workspace should be a sanctuary. Founded by Melissa, a professional with an obsession for detail and a heart for service, we've grown into Chicago's premier choice for high-end cleaning.</p>
@@ -415,8 +415,8 @@ const About = () => (
             <p>Whether it's a downtown Chicago high-rise or a suburban family home, we bring the same level of excellence and integrity to every job. We don't just clean—we make your space glow.</p>
           </div>
           <div className="grid grid-cols-2 gap-8 mt-12">
-            <div><h4 className="text-4xl font-bold text-[#0F766E] mb-2">500+</h4><p className="text-slate-500 font-medium">Happy Clients</p></div>
-            <div><h4 className="text-4xl font-bold text-[#0F766E] mb-2">100%</h4><p className="text-slate-500 font-medium">Satisfaction Rate</p></div>
+            <div><h4 className="text-4xl font-bold text-[#14B8A6] mb-2">500+</h4><p className="text-slate-500 font-medium">Happy Clients</p></div>
+            <div><h4 className="text-4xl font-bold text-[#14B8A6] mb-2">100%</h4><p className="text-slate-500 font-medium">Satisfaction Rate</p></div>
           </div>
         </div>
       </div>
@@ -431,7 +431,7 @@ const FAQ = () => {
     <section className="py-24 bg-slate-50">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-[#0F766E] font-bold tracking-widest uppercase text-sm mb-4">FAQ</h2>
+          <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">FAQ</h2>
           <h3 className="text-4xl font-bold text-slate-900">Common Questions</h3>
         </div>
         <div className="space-y-4">
@@ -439,7 +439,7 @@ const FAQ = () => {
             <div key={i} className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
               <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-slate-50 transition-colors">
                 <span className="text-lg font-bold text-slate-900">{faq.question}</span>
-                {openIndex === i ? <Minus className="text-[#0F766E]" /> : <Plus className="text-[#0F766E]" />}
+                {openIndex === i ? <Minus className="text-[#14B8A6]" /> : <Plus className="text-[#14B8A6]" />}
               </button>
               <AnimatePresence>
                 {openIndex === i && (
@@ -465,7 +465,7 @@ const Footer = () => (
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden">
               <img src="/image10.jpeg" alt="Prrfect Glo Logo" className="w-full h-full object-contain p-1" />
             </div>
-            <span className="text-2xl font-bold tracking-tight">Prrfect <span className="text-[#0F766E]">Glo</span></span>
+            <span className="text-2xl font-bold tracking-tight">Prrfect <span className="text-[#14B8A6]">Glo</span></span>
           </div>
           <p className="text-slate-400 leading-relaxed">Transforming Chicago's spaces into glowing sanctuaries with premium, eco-friendly cleaning services.</p>
           <div className="flex gap-4">
@@ -477,20 +477,20 @@ const Footer = () => (
         <div>
           <h4 className="text-lg font-bold mb-8">Quick Links</h4>
           <ul className="space-y-4 text-slate-400">
-            <li><a href="#home" className="hover:text-[#0F766E] transition-colors">Home</a></li>
-            <li><a href="#services" className="hover:text-[#0F766E] transition-colors">Services</a></li>
-            <li><a href="#how-it-works" className="hover:text-[#0F766E] transition-colors">How It Works</a></li>
-            <li><a href="#pricing" className="hover:text-[#0F766E] transition-colors">Pricing</a></li>
-            <li><a href="#gallery" className="hover:text-[#0F766E] transition-colors">Gallery</a></li>
-            <li><a href="#about" className="hover:text-[#0F766E] transition-colors">About Us</a></li>
+            <li><a href="#home" className="hover:text-[#14B8A6] transition-colors">Home</a></li>
+            <li><a href="#services" className="hover:text-[#14B8A6] transition-colors">Services</a></li>
+            <li><a href="#how-it-works" className="hover:text-[#14B8A6] transition-colors">How It Works</a></li>
+            <li><a href="#pricing" className="hover:text-[#14B8A6] transition-colors">Pricing</a></li>
+            <li><a href="#gallery" className="hover:text-[#14B8A6] transition-colors">Gallery</a></li>
+            <li><a href="#about" className="hover:text-[#14B8A6] transition-colors">About Us</a></li>
           </ul>
         </div>
         <div>
           <h4 className="text-lg font-bold mb-8">Contact Info</h4>
           <ul className="space-y-6 text-slate-400">
-            <li className="flex gap-4"><Phone className="w-5 h-5 text-[#0F766E] flex-shrink-0" /><span>708-548-1931</span></li>
-            <li className="flex gap-4"><Mail className="w-5 h-5 text-[#0F766E] flex-shrink-0 mt-0.5" /><span className="break-all text-sm sm:text-base">mmata@prrfectglocleaningservice.com</span></li>
-            <li className="flex gap-4"><MapPin className="w-5 h-5 text-[#0F766E] flex-shrink-0" /><span>Serving Chicago, IL & Suburbs</span></li>
+            <li className="flex gap-4"><Phone className="w-5 h-5 text-[#14B8A6] flex-shrink-0" /><span>708-548-1931</span></li>
+            <li className="flex gap-4"><Mail className="w-5 h-5 text-[#14B8A6] flex-shrink-0 mt-0.5" /><span className="break-all text-sm sm:text-base">mmata@prrfectglocleaningservice.com</span></li>
+            <li className="flex gap-4"><MapPin className="w-5 h-5 text-[#14B8A6] flex-shrink-0" /><span>Serving Chicago, IL & Suburbs</span></li>
           </ul>
         </div>
         <div>
