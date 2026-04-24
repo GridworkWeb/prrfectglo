@@ -139,7 +139,7 @@ const Navbar = () => {
           </div>
           <div className="flex flex-col">
             <span className={`tracking-tight text-slate-900 transition-all duration-300 ${isScrolled ? 'text-lg' : 'text-2xl md:text-3xl'}`}>
-              <span className="font-semibold">PrrFect</span> <span className="font-display-italic text-[#14B8A6] text-[1.15em]">Glo</span>
+              <span className="font-display font-semibold bg-gradient-to-r from-[#CA8A40] via-[#E8B96E] to-[#CA8A40] bg-clip-text text-transparent drop-shadow-sm">PrrFect</span> <span className="font-display-italic text-[#14B8A6] text-[1.15em]">Glo</span>
             </span>
             {!isScrolled && <span className="text-[10px] md:text-xs font-bold text-[#14B8A6] tracking-[0.2em] uppercase">Cleaning Service</span>}
           </div>
