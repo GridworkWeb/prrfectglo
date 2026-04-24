@@ -481,7 +481,7 @@ const Footer = () => (
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden">
               <img src="/image10.jpeg" alt="Prrfect Glo Logo" className="w-full h-full object-contain p-1" />
             </div>
-            <span className="text-2xl tracking-tight"><span className="font-semibold">Prrfect</span> <span className="font-display-italic text-[#14B8A6] text-[1.15em]">Glo</span></span>
+            <span className="text-2xl tracking-tight"><span className="font-semibold">PrrFect</span> <span className="font-display-italic text-[#14B8A6] text-[1.15em]">Glo</span></span>
           </div>
           <p className="text-slate-400 leading-relaxed">Transforming Chicago's spaces into glowing sanctuaries with premium, eco-friendly cleaning services.</p>
           <div className="flex gap-4">
