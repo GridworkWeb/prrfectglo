@@ -233,10 +233,16 @@ const Services = () => (
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
         {SERVICES.map((service, index) => (
-          <motion.div key={service.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}
+          <motion.div
+            key={service.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
             className={`group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 lg:col-span-2 ${
-              index >= 3 ? 'lg:[&:nth-child(4)]:col-start-2 lg:col-span-2' : ''
-            }`}>
+              index === 3 ? 'lg:col-start-2' : ''
+            }`}
+          >
             <div className="h-64 overflow-hidden relative">
               <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
               <div className="absolute top-6 left-6 w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-lg">
