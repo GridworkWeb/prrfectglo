@@ -432,8 +432,8 @@ const About = () => (
     <div className="max-w-7xl mx-auto px-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="relative">
-          <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
-            <img src="/team.jpg" alt="Melissa & The Prrfect Glo Team" className="w-full h-full object-cover" />
+          <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-slate-100">
+            <img src="/team.jpg" alt="Melissa & The Prrfect Glo Team" className="w-full h-auto object-contain" />
           </div>
           <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-3xl shadow-xl border border-slate-100 max-w-xs hidden md:block">
             <p className="text-[#14B8A6] font-bold text-lg mb-2">"Cleanliness is more than a service, it's a feeling of peace."</p>
