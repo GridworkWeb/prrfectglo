@@ -191,13 +191,26 @@ const Hero = () => (
       <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-2xl relative">
         <Sparkles className="absolute -top-6 -left-4 w-5 h-5 text-[hsl(var(--bronze))] animate-sparkle opacity-70" />
         <Sparkles className="absolute top-2 right-12 w-4 h-4 text-[#14B8A6] animate-sparkle opacity-60" style={{ animationDelay: '0.8s' }} />
-        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#14B8A6] to-[hsl(var(--bronze))] text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-lg shadow-[#14B8A6]/30 tracking-wide">
-          <Star className="w-4 h-4 fill-white" />Chicago's Premier Cleaning Service
+        <p className="font-display-italic text-2xl md:text-3xl text-slate-700 mb-6">
+          Spotless Results. Premium Experience.
+        </p>
+        {/* Flyer-style banner */}
+        <div className="relative mb-8 max-w-xl">
+          <div className="bg-slate-900 border-y-4 border-[#CA8A40] px-6 md:px-10 py-5 md:py-6 rounded-sm shadow-2xl relative">
+            <div className="absolute inset-x-0 top-0 h-px bg-[#E8B96E]/60"></div>
+            <div className="absolute inset-x-0 bottom-0 h-px bg-[#E8B96E]/60"></div>
+            <div className="text-center">
+              <div className="text-white font-display tracking-[0.3em] text-sm md:text-base mb-1">PROVIDED</div>
+              <h1 className="font-display text-white text-4xl md:text-6xl leading-none tracking-tight">
+                CLEANING <span className="font-display-italic bg-gradient-to-r from-[#CA8A40] via-[#E8B96E] to-[#CA8A40] bg-clip-text text-transparent">Services</span>
+              </h1>
+              <div className="mt-3 pt-3 border-t border-white/20 text-white font-semibold tracking-wider text-xs md:text-sm">
+                DETAILED <span className="text-[#E8B96E] mx-2">•</span> RECURRING <span className="text-[#E8B96E] mx-2">•</span> BI-WEEKLY
+              </div>
+            </div>
+          </div>
         </div>
-        <h1 className="font-display text-6xl md:text-8xl text-slate-900 leading-[1.05] mb-6 tracking-tight">
-          Where Cleanliness Meets <span className="font-display-italic bg-gradient-to-r from-[#14B8A6] to-[hsl(var(--bronze))] bg-clip-text text-transparent">Excellence</span>
-        </h1>
-        <p className="text-xl text-slate-800 mb-10 leading-relaxed font-medium">
+        <p className="text-lg text-slate-800 mb-10 leading-relaxed font-medium max-w-xl">
           Transforming your space into a glowing sanctuary. Premium residential and commercial cleaning with a white-glove touch.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
