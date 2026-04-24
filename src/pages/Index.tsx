@@ -47,7 +47,22 @@ const SERVICES: Service[] = [
   
 ];
 
-const PRICING: PricingPackage[] = [
+const PRICING_REGULAR: PricingPackage[] = [
+  {
+    name: 'Residential Cleaning', price: '$110', description: 'Reliable regular cleaning for a fresh, glowing home.',
+    features: ['1 Bed / 1 Bath: $110', '2 Bed / 1 Bath: $140', '2 Bed / 2 Bath: $170', '3–4 Bed / 2+ Bath: $200–$280', 'Surface Dusting', 'Vacuum & Mop', 'Kitchen Surfaces', 'Trash Removal']
+  },
+  {
+    name: 'Deep Cleaning', price: '$180', description: 'Premium top-to-bottom detailed reset.', popular: true,
+    features: ['1 Bed / 1 Bath: $180', '2 Bed / 1 Bath: $230', '2 Bed / 2 Bath: $280', '3–4 Bed / 2+ Bath: $320–$450', 'Baseboards & Trim', 'Inside Microwave', 'Detailed Dusting']
+  },
+  {
+    name: 'Move-In / Move-Out', price: '$160', description: 'Detailed cleaning for smooth transitions.',
+    features: ['1 Bed / 1 Bath: $160', '2 Bed / 1 Bath: $210', '2 Bed / 2 Bath: $260', '3–4 Bed / 2+ Bath: $300–$400', 'Inside Cabinets', 'Appliance Exteriors', 'Floor Deep Clean']
+  }
+];
+
+const PRICING_AFFORDABLE: PricingPackage[] = [
   {
     name: 'Residential Cleaning', price: '$80', description: 'Reliable regular cleaning for a fresh, glowing home.', special: true,
     features: ['1 Bed / 1 Bath: $80', '2 Bed / 1 Bath: $100', '2 Bed / 2 Bath: $130', '3–4 Bed / 2+ Bath: $240–$280', 'Surface Dusting', 'Vacuum & Mop', 'Kitchen Surfaces', 'Trash Removal']
@@ -62,11 +77,29 @@ const PRICING: PricingPackage[] = [
   }
 ];
 
+const OTHER_SERVICES: { name: string; items: string[]; note?: string }[] = [
+  {
+    name: 'Standard / Maintenance Cleaning (Recurring)',
+    items: ['Studio / 1 Bath: $90–$110', '1 Bed / 1 Bath: $110–$140', '2 Bed / 1 Bath: $140–$170', '2 Bed / 2 Bath: $170–$200', '3+ Bed / 2+ Bath: $200–$260']
+  },
+  {
+    name: 'Office Cleaning',
+    items: ['Small Office (1–3 people): $120–$160', 'Medium Office (4–6 people): $160–$220', 'Large Office (7+ people): $220–$320'],
+    note: 'Prices may vary based on size, frequency, and scope of work.'
+  },
+  {
+    name: 'Airbnb / Short-Term Rental',
+    items: ['Studio / 1 Bath: $100–$140', '1 Bed / 1 Bath: $140–$180', '2 Bed / 1 Bath: $180–$220', '2+ Bed / 2 Bath: $220–$280'],
+    note: 'Turnover cleaning available same-day or next-day.'
+  }
+];
+
 const ADDONS: { name: string; price: string }[] = [
-  { name: 'Oven', price: '$15+' },
+  { name: 'Oven', price: '$25+' },
   { name: 'Fridge', price: '$25+' },
-  { name: 'Window', price: '$40+' },
-  { name: 'Laundry', price: '$40+' },
+  { name: 'Window', price: '$20+' },
+  { name: 'Laundry', price: '$25+' },
+  { name: 'Inside Cabinets', price: '$20+' },
 ];
 
 const TESTIMONIALS: Testimonial[] = [
