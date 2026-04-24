@@ -194,17 +194,17 @@ const Hero = () => (
         <p className="font-display-italic text-2xl md:text-3xl text-slate-700 mb-6">
           Spotless Results. Premium Experience.
         </p>
-        {/* Flyer-style banner */}
+        {/* Flyer-style banner — themed to site */}
         <div className="relative mb-8 max-w-xl">
-          <div className="bg-slate-900 border-y-4 border-[#CA8A40] px-6 md:px-10 py-5 md:py-6 rounded-sm shadow-2xl relative">
-            <div className="absolute inset-x-0 top-0 h-px bg-[#E8B96E]/60"></div>
-            <div className="absolute inset-x-0 bottom-0 h-px bg-[#E8B96E]/60"></div>
+          <div className="bg-gradient-to-r from-[#14B8A6] via-[#0F9488] to-[#14B8A6] px-6 md:px-10 py-5 md:py-6 rounded-2xl shadow-xl shadow-[#14B8A6]/30 relative overflow-hidden">
+            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#E8B96E] to-transparent"></div>
+            <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[#E8B96E] to-transparent"></div>
             <div className="text-center">
-              <div className="text-white font-display tracking-[0.3em] text-sm md:text-base mb-1">PROVIDED</div>
+              <div className="text-white/90 font-semibold tracking-[0.3em] text-xs md:text-sm mb-1">PROVIDED</div>
               <h1 className="font-display text-white text-4xl md:text-6xl leading-none tracking-tight">
-                CLEANING <span className="font-display-italic bg-gradient-to-r from-[#CA8A40] via-[#E8B96E] to-[#CA8A40] bg-clip-text text-transparent">Services</span>
+                CLEANING <span className="font-display-italic bg-gradient-to-r from-[#E8B96E] via-[#F5D89A] to-[#CA8A40] bg-clip-text text-transparent">Services</span>
               </h1>
-              <div className="mt-3 pt-3 border-t border-white/20 text-white font-semibold tracking-wider text-xs md:text-sm">
+              <div className="mt-3 pt-3 border-t border-white/30 text-white font-semibold tracking-wider text-xs md:text-sm">
                 DETAILED <span className="text-[#E8B96E] mx-2">•</span> RECURRING <span className="text-[#E8B96E] mx-2">•</span> BI-WEEKLY
               </div>
             </div>
