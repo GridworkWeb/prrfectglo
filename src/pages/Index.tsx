@@ -431,12 +431,9 @@ const About = () => (
   <section id="about" className="py-24">
     <div className="max-w-7xl mx-auto px-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div className="relative space-y-6">
+        <div className="relative">
           <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
-            <img src="/team1.png" alt="Melissa & The Team" className="w-full h-full object-cover" />
-          </div>
-          <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
-            <img src="/team2.png" alt="Prrfect Glo Team Members" className="w-full h-full object-cover" />
+            <img src="/team.jpg" alt="Melissa & The Prrfect Glo Team" className="w-full h-full object-cover" />
           </div>
           <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-3xl shadow-xl border border-slate-100 max-w-xs hidden md:block">
             <p className="text-[#14B8A6] font-bold text-lg mb-2">"Cleanliness is more than a service, it's a feeling of peace."</p>
