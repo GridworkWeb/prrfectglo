@@ -44,7 +44,7 @@ const SERVICES: Service[] = [
   { id: 'residential', title: 'Move-In/Out', description: 'Comprehensive home cleaning tailored to your lifestyle.', icon: Home, image: '/image0.png' },
   { id: 'airbnb', title: 'Office/Commercial', description: 'Fast turnovers, 5-star results.', icon: Calendar, image: '/image4.png' },
   { id: 'deep', title: 'Post-Construction', description: 'A top-to-bottom refresh for every corner.', icon: Sparkles, image: '/image1.png' },
-  { id: 'post-con', title: 'Blank', description: 'Removing the dust of creation.', icon: AirVent, image: '/image5.png' },
+  
 ];
 
 const PRICING: PricingPackage[] = [
