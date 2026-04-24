@@ -47,7 +47,22 @@ const SERVICES: Service[] = [
   
 ];
 
-const PRICING: PricingPackage[] = [
+const PRICING_REGULAR: PricingPackage[] = [
+  {
+    name: 'Residential Cleaning', price: '$110', description: 'Reliable regular cleaning for a fresh, glowing home.',
+    features: ['1 Bed / 1 Bath: $110', '2 Bed / 1 Bath: $140', '2 Bed / 2 Bath: $170', '3–4 Bed / 2+ Bath: $200–$280', 'Surface Dusting', 'Vacuum & Mop', 'Kitchen Surfaces', 'Trash Removal']
+  },
+  {
+    name: 'Deep Cleaning', price: '$180', description: 'Premium top-to-bottom detailed reset.', popular: true,
+    features: ['1 Bed / 1 Bath: $180', '2 Bed / 1 Bath: $230', '2 Bed / 2 Bath: $280', '3–4 Bed / 2+ Bath: $320–$450', 'Baseboards & Trim', 'Inside Microwave', 'Detailed Dusting']
+  },
+  {
+    name: 'Move-In / Move-Out', price: '$160', description: 'Detailed cleaning for smooth transitions.',
+    features: ['1 Bed / 1 Bath: $160', '2 Bed / 1 Bath: $210', '2 Bed / 2 Bath: $260', '3–4 Bed / 2+ Bath: $300–$400', 'Inside Cabinets', 'Appliance Exteriors', 'Floor Deep Clean']
+  }
+];
+
+const PRICING_AFFORDABLE: PricingPackage[] = [
   {
     name: 'Residential Cleaning', price: '$80', description: 'Reliable regular cleaning for a fresh, glowing home.', special: true,
     features: ['1 Bed / 1 Bath: $80', '2 Bed / 1 Bath: $100', '2 Bed / 2 Bath: $130', '3–4 Bed / 2+ Bath: $240–$280', 'Surface Dusting', 'Vacuum & Mop', 'Kitchen Surfaces', 'Trash Removal']
@@ -62,11 +77,29 @@ const PRICING: PricingPackage[] = [
   }
 ];
 
+const OTHER_SERVICES: { name: string; items: string[]; note?: string }[] = [
+  {
+    name: 'Standard / Maintenance Cleaning (Recurring)',
+    items: ['Studio / 1 Bath: $90–$110', '1 Bed / 1 Bath: $110–$140', '2 Bed / 1 Bath: $140–$170', '2 Bed / 2 Bath: $170–$200', '3+ Bed / 2+ Bath: $200–$260']
+  },
+  {
+    name: 'Office Cleaning',
+    items: ['Small Office (1–3 people): $120–$160', 'Medium Office (4–6 people): $160–$220', 'Large Office (7+ people): $220–$320'],
+    note: 'Prices may vary based on size, frequency, and scope of work.'
+  },
+  {
+    name: 'Airbnb / Short-Term Rental',
+    items: ['Studio / 1 Bath: $100–$140', '1 Bed / 1 Bath: $140–$180', '2 Bed / 1 Bath: $180–$220', '2+ Bed / 2 Bath: $220–$280'],
+    note: 'Turnover cleaning available same-day or next-day.'
+  }
+];
+
 const ADDONS: { name: string; price: string }[] = [
-  { name: 'Oven', price: '$15+' },
+  { name: 'Oven', price: '$25+' },
   { name: 'Fridge', price: '$25+' },
-  { name: 'Window', price: '$40+' },
-  { name: 'Laundry', price: '$40+' },
+  { name: 'Window', price: '$20+' },
+  { name: 'Laundry', price: '$25+' },
+  { name: 'Inside Cabinets', price: '$20+' },
 ];
 
 const TESTIMONIALS: Testimonial[] = [
@@ -302,54 +335,108 @@ const HowItWorks = () => {
   );
 };
 
-const Pricing = () => (
-  <section id="pricing" className="py-24">
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">Pricing Packages</h2>
-        <h3 className="font-display text-5xl md:text-6xl text-slate-900 mb-6 tracking-tight">Transparent Pricing for a <span className="font-display-italic text-[#14B8A6]">Glowing</span> Home</h3>
-        <p className="text-lg text-slate-600">Choose the package that fits your needs. All prices are starting rates and may vary based on home condition.</p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {PRICING.map((pkg, i) => (
-          <div key={i} className={`relative p-8 rounded-[2.5rem] border-2 transition-all flex flex-col ${pkg.popular ? 'border-[#14B8A6] bg-white shadow-2xl scale-105 z-10' : 'border-slate-100 bg-warm-gradient hover:border-[#14B8A6]/20'}`}>
-            {pkg.popular && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#14B8A6] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Most Popular</div>}
-            {pkg.special && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[hsl(var(--bronze))] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Special</div>}
-            <h4 className="font-display text-3xl text-slate-900 mb-2">{pkg.name}</h4>
-            <p className="text-slate-500 mb-6 text-sm">{pkg.description}</p>
-            <div className="flex items-baseline gap-1 mb-8"><span className="font-display text-5xl text-slate-900">{pkg.price}</span><span className="text-slate-500 font-medium text-xs">/ starting</span></div>
-            <ul className="space-y-4 mb-10 flex-grow">
-              {pkg.features.map((feature, j) => (
-                <li key={j} className="flex items-center gap-3 text-slate-700 text-sm">
-                  <div className="w-4 h-4 bg-[#14B8A6]/10 rounded-full flex items-center justify-center flex-shrink-0"><Check className="w-2.5 h-2.5 text-[#14B8A6]" /></div>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={`w-full py-4 rounded-2xl font-bold transition-all text-sm flex items-center justify-center gap-2 ${pkg.popular ? 'bg-[#14B8A6] text-white glow-teal hover:bg-[#0F9488]' : 'bg-white text-slate-900 border border-slate-200 hover:border-[#14B8A6] hover:text-[#14B8A6]'}`}>
-              <MessageCircle className="w-4 h-4" /> Contact Us
-            </a>
-          </div>
-        ))}
-      </div>
-      <div className="mt-16 max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <h4 className="font-display text-4xl md:text-5xl text-slate-900 mb-2">Add-Ons</h4>
-          <p className="text-slate-500">Customize your clean with extra services.</p>
+const Pricing = () => {
+  const [tier, setTier] = useState<'regular' | 'affordable'>('regular');
+  const packages = tier === 'regular' ? PRICING_REGULAR : PRICING_AFFORDABLE;
+
+  return (
+    <section id="pricing" className="py-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-[#14B8A6] font-bold tracking-widest uppercase text-sm mb-4">Pricing Packages</h2>
+          <h3 className="font-display text-5xl md:text-6xl text-slate-900 mb-6 tracking-tight">Transparent Pricing for a <span className="font-display-italic text-[#14B8A6]">Glowing</span> Home</h3>
+          <p className="text-lg text-slate-600">Choose the package that fits your needs. All prices are starting rates and may vary based on home condition.</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {ADDONS.map((addon, i) => (
-            <div key={i} className="bg-white border border-slate-100 rounded-2xl p-6 text-center hover:border-[#14B8A6]/30 transition-all">
-              <div className="text-slate-900 font-bold text-lg mb-1">{addon.name}</div>
-              <div className="text-[#14B8A6] font-bold text-xl">{addon.price}</div>
+
+        {/* Pricing Toggle */}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex bg-slate-100 p-1.5 rounded-full border border-slate-200">
+            <button
+              onClick={() => setTier('regular')}
+              className={`px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${tier === 'regular' ? 'bg-[#14B8A6] text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}
+            >
+              Regular Pricing
+            </button>
+            <button
+              onClick={() => setTier('affordable')}
+              className={`px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${tier === 'affordable' ? 'bg-[hsl(var(--bronze))] text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}
+            >
+              <Sparkles className="w-3.5 h-3.5" /> Affordable Flyer
+            </button>
+          </div>
+        </div>
+        {tier === 'affordable' && (
+          <p className="text-center text-sm text-slate-500 italic mb-8 -mt-4">Special pricing for clients who received our Affordable Flyer.</p>
+        )}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {packages.map((pkg, i) => (
+            <div key={`${tier}-${i}`} className={`relative p-8 rounded-[2.5rem] border-2 transition-all flex flex-col ${pkg.popular ? 'border-[#14B8A6] bg-white shadow-2xl scale-105 z-10' : 'border-slate-100 bg-warm-gradient hover:border-[#14B8A6]/20'}`}>
+              {pkg.popular && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#14B8A6] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Most Popular</div>}
+              {pkg.special && <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[hsl(var(--bronze))] text-white px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap">Special</div>}
+              <h4 className="font-display text-3xl text-slate-900 mb-2">{pkg.name}</h4>
+              <p className="text-slate-500 mb-6 text-sm">{pkg.description}</p>
+              <div className="flex items-baseline gap-1 mb-8"><span className="font-display text-5xl text-slate-900">{pkg.price}</span><span className="text-slate-500 font-medium text-xs">/ starting</span></div>
+              <ul className="space-y-4 mb-10 flex-grow">
+                {pkg.features.map((feature, j) => (
+                  <li key={j} className="flex items-center gap-3 text-slate-700 text-sm">
+                    <div className="w-4 h-4 bg-[#14B8A6]/10 rounded-full flex items-center justify-center flex-shrink-0"><Check className="w-2.5 h-2.5 text-[#14B8A6]" /></div>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={`w-full py-4 rounded-2xl font-bold transition-all text-sm flex items-center justify-center gap-2 ${pkg.popular ? 'bg-[#14B8A6] text-white glow-teal hover:bg-[#0F9488]' : 'bg-white text-slate-900 border border-slate-200 hover:border-[#14B8A6] hover:text-[#14B8A6]'}`}>
+                <MessageCircle className="w-4 h-4" /> Contact Us
+              </a>
             </div>
           ))}
         </div>
+
+        {/* Other Services - only on Regular tier */}
+        {tier === 'regular' && (
+          <div className="mt-20">
+            <div className="text-center mb-10">
+              <h4 className="font-display text-4xl md:text-5xl text-slate-900 mb-2">Other Cleaning Services</h4>
+              <p className="text-slate-500">Specialized options for every space.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {OTHER_SERVICES.map((svc, i) => (
+                <div key={i} className="bg-warm-gradient border border-slate-100 rounded-3xl p-6">
+                  <h5 className="font-bold text-slate-900 text-base mb-4 uppercase tracking-wide text-[#14B8A6]">{svc.name}</h5>
+                  <ul className="space-y-2 mb-3">
+                    {svc.items.map((item, j) => (
+                      <li key={j} className="text-slate-700 text-sm flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#14B8A6] mt-2 flex-shrink-0"></div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  {svc.note && <p className="text-xs italic text-slate-500 mt-3">{svc.note}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="mt-16 max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h4 className="font-display text-4xl md:text-5xl text-slate-900 mb-2">Add-Ons</h4>
+            <p className="text-slate-500">Customize your clean with extra services.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {ADDONS.map((addon, i) => (
+              <div key={i} className="bg-white border border-slate-100 rounded-2xl p-6 text-center hover:border-[#14B8A6]/30 transition-all">
+                <div className="text-slate-900 font-bold text-lg mb-1">{addon.name}</div>
+                <div className="text-[#14B8A6] font-bold text-xl">{addon.price}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <p className="text-center mt-12 text-slate-500 italic">* Prices are starting rates and can vary based on home size and condition.</p>
       </div>
-      <p className="text-center mt-12 text-slate-500 italic">* Prices are starting rates and can vary based on home size and condition.</p>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
